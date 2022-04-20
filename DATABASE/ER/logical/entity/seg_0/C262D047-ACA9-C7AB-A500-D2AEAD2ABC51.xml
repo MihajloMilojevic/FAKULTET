@@ -1,0 +1,100 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C262D047-ACA9-C7AB-A500-D2AEAD2ABC51" name="ISPIT">
+<createdBy>PC</createdBy>
+<createdTime>2022-04-20 15:15:18 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_predmeta" id="F0E86F66-FFDD-76C8-0452-96919E2EBDAA">
+<createdBy>PC</createdBy>
+<createdTime>2022-04-20 15:16:26 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="index" id="2A27269E-90B9-D5AB-6126-BADC8CA630EC">
+<createdBy>PC</createdBy>
+<createdTime>2022-04-20 15:17:09 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ocena" id="BE23F5EC-81B6-5F59-B52C-9E74AA21251B">
+<createdBy>PC</createdBy>
+<createdTime>2022-04-20 15:18:17 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_predmeta1" id="A434B765-A53C-0679-EDA3-DE76C9CBB1E7">
+<createdBy>PC</createdBy>
+<createdTime>2022-04-20 15:31:27 UTC</createdTime>
+<generatorID>C137E445-768F-8F83-AEAE-FEEEDD35A920</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<referedAttribute>D96D0716-8237-B554-FF84-EC8BC3116EB0</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="index1" id="DF7C7B15-75A1-01FC-E9AC-5C05426C7C9B">
+<createdBy>PC</createdBy>
+<createdTime>2022-04-20 15:31:50 UTC</createdTime>
+<generatorID>2DAAD501-0D1B-8082-1D7F-A548C31C964D</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<referedAttribute>E418FFE5-8435-2218-9B2E-75BCE312BCFC</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="B6E52E32-6BB0-1D8F-3D6C-0F433BF68B88" name="ISPIT PK">
+<createdBy>PC</createdBy>
+<createdTime>2022-04-20 15:17:06 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>F0E86F66-FFDD-76C8-0452-96919E2EBDAA</attributeRef>
+<attributeRef>2A27269E-90B9-D5AB-6126-BADC8CA630EC</attributeRef>
+<attributeRef>A434B765-A53C-0679-EDA3-DE76C9CBB1E7</attributeRef>
+<attributeRef>DF7C7B15-75A1-01FC-E9AC-5C05426C7C9B</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
