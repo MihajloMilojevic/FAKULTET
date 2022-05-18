@@ -1,15 +1,19 @@
-export default function Model(schema, tableName) {
-	const modelFunction = (params) => {
+export default function Model(tableName, schema) {
+	const _ = function(params) {
 		for(key in schema) {
-			// ide se kroz schemu i kreiraju se polja
+			this[key] = null;
+			if(schema[key].hasOwnProperty("default"))
+				this[key] = schema[key].default;
+			if(params.hasOwnProperty(key))
+				this[key] = params[key];
 		}
 		this.insert = async () => {}
 		this.update = async () => {}
 		this.delete = async () => {}
 	}
-	modelFunction.find = async (filter) => {}
-	modelFunction.findAndUpdate = async (filter, changes) => {}
-	return modelFunction
+	_.find = async (filter) => {}
+	_.findAndUpdate = async (filter, changes) => {}
+	return _
 }
 
 // schema treba da bude objekat ciji je svaki atribut ime kolone u bazi
