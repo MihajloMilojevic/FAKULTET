@@ -2,8 +2,24 @@
 // 	id_grupe INT AUTO_INCREMENT PRIMARY KEY ,
 // 	naziv VARCHAR(100) NOT NULL
 // );
-import DB from "../connection";
 
+import Model from "./createModel"
+
+const schema = {
+	id_grupe: {
+		primary: true,
+		auto: true
+	},
+	naziv: {
+		default: ""
+	}
+}
+
+const Grupa = Model("grupe", schema);
+
+export default Grupa;
+
+/*
 export default class Grupa {
 	constructor({naziv, id_grupe}) {
 		this.naziv = naziv;
@@ -30,8 +46,8 @@ export default class Grupa {
 		try {
 			const result = await DB.query(
 				`
-					UPDATE grupe
-					SET naziv = ?
+					UPDATE ${tableName}
+					SET 
 					WHERE id_grupe = ?
 				`,
 				[
@@ -103,4 +119,4 @@ export default class Grupa {
 			return {error, data: null};
 		}
 	}
-}
+}*/
