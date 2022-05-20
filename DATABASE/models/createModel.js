@@ -43,7 +43,7 @@ export default function model(tableName, schema) {
 			this[key] = null;
 			if(schema[key].hasOwnProperty("auto") && schema[key].auto)
 				autoFields.push(key);
-			else
+			else if((schema[key].hasOwnProperty("mutable") && !schema[key].mutable) || !schema[key].hasOwnProperty("mutable"))
 				mutableFields.push(key);
 			if(schema[key].hasOwnProperty("primary") && schema[key].primary)
 				primaryKeys.push(key);

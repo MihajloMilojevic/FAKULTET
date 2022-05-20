@@ -3,8 +3,28 @@
 // 	naziv VARCHAR(100) NOT NULL,
 // 	id_grupe NUMERIC NOT NULL REFERENCES grupe(id_grupe)
 // );
-import DB from "../connection";
 
+import model from "./createModel"
+
+const schema = {
+	id_smera: {
+		primary: true,
+		auto: true
+	},
+	naziv: {
+		default: ""
+	},
+	id_grupe: {
+		default: 0,
+		mutable: false
+	}
+}
+
+const Smer = model("smerovi", schema);
+
+export default Smer;
+
+/*
 export default class Smer {
 	constructor({naziv, id_smera, id_grupe}) {
 		this.naziv = naziv;
@@ -122,3 +142,4 @@ export default class Smer {
 		}
 	}
 }
+*/

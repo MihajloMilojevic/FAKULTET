@@ -6,8 +6,40 @@
 // id_grada NUMERIC NOT NULL REFERENCES gradovi(id_grada),
 // id_smera NUMERIC NOT NULL REFERENCES smerovi(id_smera)
 
-import DB from "../connection";
 
+import model from "./createModel"
+
+const schema = {
+	broj_indeksa: {
+		primary: true,
+		mutable: false
+	},
+	jmbg: {
+		default: ""
+	},
+	ime: {
+		default: ""
+	},
+	prezime: {
+		default: ""
+	},
+	mejl: {
+		default: ""
+	},
+	id_grada: {
+		mutable: false
+	},
+	id_smera: {
+		mutable: false
+	},
+
+}
+
+const Student = model("studenti", schema);
+
+export default Student;
+
+/*
 export default class Student {
 	constructor({broj_indeksa, jmbg, ime, prezime, mejl, id_grada, id_smera}) {
 		this.broj_indeksa = broj_indeksa
@@ -49,3 +81,4 @@ export default class Student {
 		}
 	}
 }
+*/

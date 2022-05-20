@@ -2,8 +2,25 @@
 // 	id_grada NUMERIC PRIMARY KEY,
 // 	naziv VARCHAR(50) NOT NULL
 // );
-import DB from "../connection";
 
+import model from "./createModel"
+
+const schema = {
+	id_grada: {
+		primary: true
+	},
+	naziv: {
+		default: ""
+	}
+}
+
+const Grad = model("gradovi", schema);
+
+export default Grad;
+
+
+
+/*
 export default class Grad {
 	constructor({naziv, id_grada}) {
 		this.naziv = naziv;
@@ -103,4 +120,4 @@ export default class Grad {
 			return {error, data: null};
 		}
 	}
-}
+}*/
