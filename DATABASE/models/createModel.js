@@ -38,23 +38,25 @@ export default function model(tableName, schema) {
 	let allFields = [];
 	let autoFields = [];
 	let primaryKeys = [];
-	const Model = function(params) {
+	for(let key in schema) {
+		if(schema[key].hasOwnProperty("auto") && schema[key].auto)
+			autoFields.push(key);
+		else if((schema[key].hasOwnProperty("mutable") && !schema[key].mutable) || !schema[key].hasOwnProperty("mutable"))
+			mutableFields.push(key);
+		if(schema[key].hasOwnProperty("primary") && schema[key].primary)
+			primaryKeys.push(key);
+		allFields.push(key);
+		if(primaryKeys.length == 0)
+			throw new Error("Schema must contain at least one primary key");
+	}
+	const Model = function(params = {}) {
 		for(let key in schema) {
 			this[key] = null;
-			if(schema[key].hasOwnProperty("auto") && schema[key].auto)
-				autoFields.push(key);
-			else if((schema[key].hasOwnProperty("mutable") && !schema[key].mutable) || !schema[key].hasOwnProperty("mutable"))
-				mutableFields.push(key);
-			if(schema[key].hasOwnProperty("primary") && schema[key].primary)
-				primaryKeys.push(key);
-			allFields.push(key);
 			if(schema[key].hasOwnProperty("default"))
 				this[key] = schema[key].default;
 			if(params.hasOwnProperty(key))
 				this[key] = params[key];
 		}
-		if(primaryKeys.length == 0)
-			throw new Error("Schema must contain at least one primary key");
 	}
 	Model.prototype = {
 		insert: async function() {
@@ -102,6 +104,13 @@ export default function model(tableName, schema) {
 					return {error, data: null}
 				}
 			},
+		
+	}
+	Model.addStaticMethod = function(name, method) {
+		Model[name] = method;
+	}
+	Model.addMethod =  function(name, method) {
+		Model.prototype[name] = method;
 	}
 	Model.create = async (data) => {
 		const newObj = new Model(data);
