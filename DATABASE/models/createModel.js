@@ -1,11 +1,11 @@
 import DB from "../connection";
 
+function Type(value) {
+	if(typeof value === "string")
+		return `'${value}'`;
+	return value
+}
 function Where(filter) {
-	function Type(value) {
-		if(typeof value === "string")
-			return `'${value}'`;
-		return value
-	}
 	let queries = [];
 	for(let key in filter) {
 		if(typeof filter[key] === "object") {
@@ -25,13 +25,20 @@ function Where(filter) {
 	}
 	return queries.join(" AND ");
 }
+function Set(changes) {
+	let queries = [];
+	for(let key in changes) {
+		queries.push(`${key} = ${Type(changes[key])}`);
+	}
+	return queries.join(" , ");
+}
 
-export default function Model(tableName, schema) {
+export default function model(tableName, schema) {
 	let mutableFields = [];
 	let allFields = [];
 	let autoFields = [];
 	let primaryKeys = [];
-	const _ = function(params) {
+	const Model = function(params) {
 		for(let key in schema) {
 			this[key] = null;
 			if(schema[key].hasOwnProperty("auto") && schema[key].auto)
@@ -49,72 +56,98 @@ export default function Model(tableName, schema) {
 		if(primaryKeys.length == 0)
 			throw new Error("Schema must contain at least one primary key");
 	}
-	_.prototype = {
+	Model.prototype = {
 		insert: async function() {
 				try {
 					const result = await DB.query(
-						`
-							INSERT INTO ${tableName}(${mutableFields.join(", ")}) 
-							VALUES(${mutableFields.map(() => "?").join(", ")})
-						`,
+							`INSERT INTO ${tableName}(${mutableFields.join(", ")}) ` +
+							`VALUES(${mutableFields.map(() => "?").join(", ")})`
+						,
 						mutableFields.map(key => this[key])
 					)
 					for(let key in autoFields)
 						this[key] = result.insertId
-					return result.affectedRows != 0;
+					return {error: null, data: result}
 				} catch (error) {
-					return false
+					return {error, data: null}
 				}
 			},
 		update: async function() {
 				try {
 					const result = await DB.query(
-						`
-							UPDATE ${tableName}
-							SET ${allFields.map(key => `${key}} = ?`).join(" , ")}
-							WHERE ${primaryKeys.map(key => `${key} = ?`).join(" AND ")}
-						`,
+							`UPDATE ${tableName} ` +
+							`SET ${mutableFields.map(key => `${key}} = ?`).join(" , ")} ` +
+							`WHERE ${primaryKeys.map(key => `${key} = ?`).join(" AND ")}`
+						,
 						[
-							...allFields.map(key => this[key]),
+							...mutableFields.map(key => this[key]),
 							...primaryKeys.map(key => this[key])
 						]
 					)
-					return result.affectedRows != 0;
+					return {error: null, data: result}
 				} catch (error) {
-					return false
+					return {error, data: null}
 				}
 			},
 		delete: async function() {
 				try {
 					const result = await DB.query(
-						`
-							DELETE FROM ${tableName}
-							WHERE ${primaryKeys.map(key => `${key} = ?`).join(" AND ")}
-						`,
+							`DELETE FROM ${tableName} ` +
+							`WHERE ${primaryKeys.map(key => `${key} = ?`).join(" AND ")}`
+						,
 							primaryKeys.map(key => this[key])
 					)
-					return result.affectedRows != 0;
+					return {error: null, data: result}
 				} catch (error) {
-					return false
+					return {error, data: null}
 				}
 			},
 	}
-	_.find = async (filter) => {
-		const query = Where(filter);
+	Model.create = async (data) => {
+		const newObj = new Model(data);
+		const result = await newObj.insert();
+		return result;
+	}
+	Model.find = async (filter) => {
+		const where = Where(filter);
 		try {
 			const result = await DB.query(
 				` SELECT * FROM ${tableName} ` + 
-				`WHERE ${query !== "" ?  query: 1}`
+				`WHERE ${where !== "" ?  where: 1}`
 			)
-			const all = result.map((item => (new _(item))))
+			const all = result.map((item => (new Model(item))))
 			return {error: null, data: all}
 		} catch (error) {
 			return {error, data: null};
 		}
 	}
-	_.findAndUpdate = async (filter, changes) => {}
-	return _
+	Model.findAndUpdate = async (filter, changes) => {
+		const where = Where(filter);
+		const set = Set(changes)
+		if(set === "")
+			throw new Error("Must have at least one change")
+		try {
+			const result = await DB.query(
+				`UPDATE ${tableName} ` +
+				`SET ${set} ` + 
+				`WHERE ${where !== "" ? where : 1}`
+			)
+			return {error: null, data: result}
+		} catch (error) {
+			return {error, data: null};
+		}
+	}
+	Model.findAndDelete = async (filter) => {
+		const where = Where(filter);
+		try {
+			const result = await DB.query(
+				`DELETE FROM ${tableName} ` + 
+				`WHERE ${where !== "" ?  where: 1}`
+			)
+			return {error: null, data: result}
+		} catch (error) {
+			return {error, data: null};
+		}
+	}
+	return Model
 }
-
-// schema treba da bude objekat ciji je svaki atribut ime kolone u bazi
-// svaki atribut može da ima default vrednost	

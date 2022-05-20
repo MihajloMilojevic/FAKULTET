@@ -3,7 +3,7 @@
 // 	naziv VARCHAR(100) NOT NULL
 // );
 
-import Model from "./createModel"
+import model from "./createModel"
 
 const schema = {
 	id_grupe: {
@@ -15,9 +15,18 @@ const schema = {
 	}
 }
 
-const Grupa = Model("grupe", schema);
+const Grupa = model("grupe", schema);
 
 export default Grupa;
+
+
+
+
+
+
+
+
+
 
 /*
 export default class Grupa {
