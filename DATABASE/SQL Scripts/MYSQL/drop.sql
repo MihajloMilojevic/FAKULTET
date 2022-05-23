@@ -1,4 +1,5 @@
 DROP TABLE slusanja;
+DROP FUNCTION mozeDaUpise;
 DROP TABLE ispiti;
 DROP TABLE zavisnosti;
 DROP TABLE predmeti;
