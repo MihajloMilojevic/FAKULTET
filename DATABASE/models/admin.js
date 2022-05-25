@@ -1,18 +1,17 @@
-// CREATE TABLE profesori(
-// 	id_profesora INT AUTO_INCREMENT PRIMARY KEY,
+// CREATE TABLE IF NOT EXISTS admini(
+// 	id_admina INT AUTO_INCREMENT PRIMARY KEY,
 // 	jmbg VARCHAR(13) UNIQUE NOT NULL CHECK (LENGTH(jmbg) = 13),
 // 	ime VARCHAR(50) NOT NULL,
 // 	prezime VARCHAR(50) NOT NULL,
-// 	mejl VARCHAR(50) NOT NULL UNIQUE,
+// 	mejl VARCHAR(70) NOT NULL UNIQUE,
 // 	adresa VARCHAR(100) NOT NULL,
-// 	telefon VARCHAR(20) NOT NULL,
-// 	plata NUMERIC NOT NULL
+// 	telefon VARCHAR(20) NOT NULL
 // );
 
 import mysqlLikeMongo from "@mihajlomilojevic/mysql-like-mongo"
 
 const schema = mysqlLikeMongo.Schema({
-	id_profesora: {
+	id_admina: {
 		type: mysqlLikeMongo.DataTypes.INTEGER,
 		primary: true,
 		auto: true
@@ -40,13 +39,9 @@ const schema = mysqlLikeMongo.Schema({
 	telefon: {
 		type: mysqlLikeMongo.DataTypes.STRING,
 		default: ""
-	},
-	plata: {
-		type: mysqlLikeMongo.DataTypes.INTEGER,
-		default: 0
-	},
+	}
 })
 
-const Profesor = mysqlLikeMongo.Model("profesori", schema);
+const Admin = mysqlLikeMongo.Model("admini", schema);
 
-export default Profesor;
+export default Admin;

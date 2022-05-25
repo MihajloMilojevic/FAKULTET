@@ -4,21 +4,23 @@
 // 	PRIMARY KEY(id_predmeta_od, id_predmeta_ko)
 // );
 
-import model from "./createModel"
+import mysqlLikeMongo from "@mihajlomilojevic/mysql-like-mongo"
 
-const schema = {
+const schema = mysqlLikeMongo.Schema({
 	id_predmeta_od: {
+		type: mysqlLikeMongo.DataTypes.INTEGER,
 		primary: true,
 		default: 0,
 		mutable: false
 	},
 	id_predmeta_do: {
+		type: mysqlLikeMongo.DataTypes.INTEGER,
 		primary: true,
 		default: 0,
 		mutable: false
 	}
-}
+})
 
-const Zavisnost = model("zavisnosti", schema);
+const Zavisnost = mysqlLikeMongo.Model("zavisnosti", schema);
 
 export default Zavisnost;

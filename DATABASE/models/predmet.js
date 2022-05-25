@@ -6,27 +6,32 @@
 // 	nedeljni_fond NUMERIC NOT NULL
 // );
 
-import model from "./createModel"
+import mysqlLikeMongo from "@mihajlomilojevic/mysql-like-mongo"
 
-const schema = {
+const schema = mysqlLikeMongo.Schema({
 	id_predmeta: {
+		type: mysqlLikeMongo.DataTypes.INTEGER,
 		primary: true,
 		auto: true
 	},
 	naziv: {
+		type: mysqlLikeMongo.DataTypes.STRING,
 		default: ""
 	},
 	id_smera: {
+		type: mysqlLikeMongo.DataTypes.INTEGER,
 		mutable: false,
 	},
 	id_profesora: {
+		type: mysqlLikeMongo.DataTypes.INTEGER,
 		mutable: false,
 	},
 	nedeljni_fond: {
+		type: mysqlLikeMongo.DataTypes.INTEGER,
 		default: 0
 	}
-}
+})
 
-const Predmet = model("predmeti", schema);
+const Predmet = mysqlLikeMongo.Model("predmeti", schema);
 
 export default Predmet;

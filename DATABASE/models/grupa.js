@@ -3,19 +3,21 @@
 // 	naziv VARCHAR(100) NOT NULL
 // );
 
-import model from "./createModel"
+import mysqlLikeMongo from "@mihajlomilojevic/mysql-like-mongo"
 
-const schema = {
+const schema = mysqlLikeMongo.Schema({
 	id_grupe: {
+		type: mysqlLikeMongo.DataTypes.INTEGER,
 		primary: true,
 		auto: true
 	},
 	naziv: {
+		type: mysqlLikeMongo.DataTypes.STRING,
 		default: ""
 	}
-}
+})
 
-const Grupa = model("grupe", schema);
+const Grupa = mysqlLikeMongo.Model("grupe", schema);
 
 export default Grupa;
 

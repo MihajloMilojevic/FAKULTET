@@ -4,19 +4,21 @@
 // 	PRIMARY KEY (id_predmeta, broj_indeksa)
 // );
 
-import model from "./createModel"
+import mysqlLikeMongo from "@mihajlomilojevic/mysql-like-mongo"
 
-const schema = {
+const schema = mysqlLikeMongo.Schema({
 	id_predmeta: {
+		type: mysqlLikeMongo.DataTypes.INTEGER,
 		primary: true,
 		mutable: false
 	},
 	broj_indeksa: {
+		type: mysqlLikeMongo.DataTypes.STRING,
 		primary: true,
 		mutable: false
 	}
-}
+})
 
-const Slusanje = model("slusanja", schema);
+const Slusanje = mysqlLikeMongo.Model("slusanja", schema);
 
 export default Slusanje;

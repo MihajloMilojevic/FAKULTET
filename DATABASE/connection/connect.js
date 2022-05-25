@@ -1,15 +1,10 @@
-const mysql = require('serverless-mysql')
+import mysqlLikeMongo from "@mihajlomilojevic/mysql-like-mongo"
 
-const connection = mysql({
-  config: {
-    host     : process.env.HOST,
-    database : process.env.DATABASE,
-    user     : process.env.USER,
-    password : process.env.PASSWORD
-  }
+mysqlLikeMongo.Connect({
+  host     : process.env.HOST,
+  database : process.env.DATABASE,
+  user     : process.env.USER,
+  password : process.env.PASSWORD
 })
 
-
-console.log(typeof mysql, mysql);
-
-export default connection;
+export default mysqlLikeMongo.connection;
