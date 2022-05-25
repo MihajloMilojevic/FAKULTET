@@ -1,6 +1,9 @@
-import Grupa from "../../../DATABASE/models/grupa";
+import {Grupa} from "../../../DATABASE/models";
+import mysqlLikeMongo from "@mihajlomilojevic/mysql-like-mongo";
+
+import connection from "../../../DATABASE/connection/connect";
 
 export default async function Fun(req, res) {
-	const {error, data} = await Grupa.find({});
-	res.json(error || JSON.stringify(data));
+	//const data = await Grupa.find({});
+	res.json(JSON.stringify(connection) /*|| JSON.stringify(data)*/);
 }

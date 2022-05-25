@@ -80,6 +80,42 @@
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>70</dataTypeSize>
+<ownDataTypeParameters>70,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="jmbg" id="979262D6-3468-5A06-8E5D-B6B82372AA4E">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:41:02 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>13</dataTypeSize>
+<ownDataTypeParameters>13,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="adresa" id="16FE3FED-5D90-8AAA-A8A8-D6F45B22E59F">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:41:18 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="telefon" id="70DE34E1-4E3F-760E-B00F-25DE9FBFAED2">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:41:31 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>

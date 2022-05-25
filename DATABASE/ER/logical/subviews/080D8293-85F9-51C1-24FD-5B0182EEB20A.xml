@@ -28,11 +28,11 @@
 </OView>
 <OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="8C9592AD-71B9-6A60-CD9D-A6BBE74EE13C" otype="Entity" vid="3B6C8EFA-3AA9-AC8E-C8BF-429BE8B8E4F6">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="90" y="30" width="170" height="110"/>
+<bounds x="130" y="30" width="131" height="131"/>
 </OView>
 <OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="B19A9142-844C-C8AB-1DB7-B6977D1D6D19" otype="Entity" vid="3C74F4E5-FCD3-FFB8-227B-EBCB068086AD">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="70" y="190" width="170" height="144"/>
+<bounds x="100" y="190" width="140" height="144"/>
 </OView>
 <OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="C262D047-ACA9-C7AB-A500-D2AEAD2ABC51" otype="Entity" vid="27F5DFFF-7290-F6CB-52FF-C15749CE6C7E">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
