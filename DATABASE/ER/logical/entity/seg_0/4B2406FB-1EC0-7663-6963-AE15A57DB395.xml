@@ -116,14 +116,31 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="mejl1" id="0110B0BF-8145-D351-D4B7-0E445F87A53F">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:27:11 UTC</createdTime>
+<generatorID>639A2066-BDA5-17DC-3F05-D99DB48064FF</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>BD96F3DD-9331-8933-DB1F-7873ACC783F5</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>70</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="DBBD7F0D-E94A-C057-5C23-B16C8B5840AB" name="STUDENT PK">
 <createdBy>PC</createdBy>
 <createdTime>2022-04-20 14:59:56 UTC</createdTime>
 <ownerDesignName>ER</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

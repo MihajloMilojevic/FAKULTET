@@ -1,0 +1,100 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="8C9592AD-71B9-6A60-CD9D-A6BBE74EE13C" name="ADMIN">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:21:27 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_admina" id="D5601A93-EFD4-700F-4551-460FFAD08A4C">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:22:38 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="mejl" id="B7350BA8-0E37-EE04-7771-AA797CAAE38A">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:21:45 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>70</dataTypeSize>
+<ownDataTypeParameters>70,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ime" id="BA0F9399-1FF0-C01A-4615-CC5BC4085501">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:23:03 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="prezime" id="9FBDED86-9657-17C8-AA9C-84DCFE901942">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:23:16 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="mejl1" id="56D3E055-5938-EA43-C375-42F0A06062D9">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:27:06 UTC</createdTime>
+<generatorID>2F68FCFE-8146-79D6-29A8-3737BA48E242</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>BD96F3DD-9331-8933-DB1F-7873ACC783F5</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>70</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="043552A0-2483-5F3F-624D-1A6CFDBD0226" name="ADMIN PK">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:23:00 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>D5601A93-EFD4-700F-4551-460FFAD08A4C</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

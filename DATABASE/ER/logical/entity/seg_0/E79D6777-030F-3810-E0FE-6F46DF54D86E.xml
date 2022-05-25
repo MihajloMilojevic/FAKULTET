@@ -1,0 +1,114 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="E79D6777-030F-3810-E0FE-6F46DF54D86E" name="KORISNIK">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-24 19:50:21 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="mejl" id="BD96F3DD-9331-8933-DB1F-7873ACC783F5">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-24 19:50:31 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>70</dataTypeSize>
+<ownDataTypeParameters>70,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="lozinka" id="5FB01EFC-5552-BE95-8B19-4130782A8563">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-24 19:50:53 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="uloga" id="19CDE92F-7BAD-3EB1-CED7-D8C1218B910A">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-24 19:51:06 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_profesora" id="6B13668E-1AD7-1721-0FC7-C4C382246F67">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:26:00 UTC</createdTime>
+<generatorID>FC68D483-FE57-6B1E-9FC2-49DAAA24A64E</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>DB1F0CE5-FF3D-DA8A-5493-BA2910F03414</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_admina" id="EBBF7DDF-BB74-D16A-0535-BE8429F87DFE">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:27:03 UTC</createdTime>
+<generatorID>2F68FCFE-8146-79D6-29A8-3737BA48E242</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>D5601A93-EFD4-700F-4551-460FFAD08A4C</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="index" id="77B67793-E6C4-433E-5B9D-A8CCE421AA00">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:27:14 UTC</createdTime>
+<generatorID>639A2066-BDA5-17DC-3F05-D99DB48064FF</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>E418FFE5-8435-2218-9B2E-75BCE312BCFC</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="E3951DA6-27D5-B009-0BA6-E7C0504250B9" name="KORISNIK PK">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-24 19:50:38 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>BD96F3DD-9331-8933-DB1F-7873ACC783F5</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

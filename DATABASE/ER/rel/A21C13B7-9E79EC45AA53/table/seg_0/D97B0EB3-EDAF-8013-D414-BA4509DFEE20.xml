@@ -1,0 +1,102 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D97B0EB3-EDAF-8013-D414-BA4509DFEE20" name="SLUŠANJE">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>487869C1-6B6A-9C99-31C3-E068DE24E1D6</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="index" id="7B449FA4-0FEB-2420-FD14-4E5F04BF780A">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>2F8654B4-CBD1-E374-B068-8AB3BAB81715</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_predmeta" id="4F0E865E-C862-FD6B-7645-B245255DD601">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>9EB12AF7-5293-D27B-DE6A-AD9C7FB2D205</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PREDMET_id_predmeta" id="A9F5B399-B383-F80C-2EAC-D5A466687E7C">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>39DD868F-CAF3-C2EF-315E-F572835DA13F</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B9DBFE7B-3993-AA48-C204-5E25EFE641C6" referredColumn="4875BD1F-A86D-F7DC-7D52-8EEC37D51078"/>
+</associations>
+</Column>
+<Column name="STUDENT_index" id="0450056A-2866-001B-9B5E-FDF7757588B5">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>227CD969-F39C-C7AF-E05A-DEB31194DCDD</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FD8C336F-8067-06F7-6C60-161655489D20" referredColumn="80100823-5A31-5548-40E2-0AD39C0EAC16"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="DB735229-1852-D2FE-22C6-F5CD939531E2" name="SLUŠANJE_PK">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>48C0489C-BE7F-0C9E-676F-B34745E561A0</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7B449FA4-0FEB-2420-FD14-4E5F04BF780A"/>
+<colUsage columnID="4F0E865E-C862-FD6B-7645-B245255DD601"/>
+<colUsage columnID="A9F5B399-B383-F80C-2EAC-D5A466687E7C"/>
+<colUsage columnID="0450056A-2866-001B-9B5E-FDF7757588B5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A5634FE3-B57F-8C42-15B4-E15CD5DEB6BC" name="SLUŠANJE_PREDMET_FK">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>C7D7CE96-6303-8CDC-D96D-E107E690713D</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A9F5B399-B383-F80C-2EAC-D5A466687E7C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FE843FCB-9A32-13BB-DB5C-A1EA044A31B9" name="SLUŠANJE_STUDENT_FK">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>13F9EEA2-B71D-45BB-5FB4-C5D065D63E47</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0450056A-2866-001B-9B5E-FDF7757588B5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,126 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C92A420B-1A51-26D8-DC34-65B539AB1ED8" name="ISPIT">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>C262D047-ACA9-C7AB-A500-D2AEAD2ABC51</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_predmeta" id="752235F1-31D1-27D3-E1F3-9954681C06FE">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>F0E86F66-FFDD-76C8-0452-96919E2EBDAA</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="index" id="6EBAF9A3-4833-85B9-29A6-9CB25A3C7330">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>2A27269E-90B9-D5AB-6126-BADC8CA630EC</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ocena" id="93C9210A-F681-CC29-D53F-8E23A9CAC84B">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>BE23F5EC-81B6-5F59-B52C-9E74AA21251B</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PREDMET_id_predmeta" id="D7A3A847-6749-9D8E-0311-C197908F3F4D">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>A434B765-A53C-0679-EDA3-DE76C9CBB1E7</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3426C537-A758-945D-7490-9922D244DB5F" referredColumn="4875BD1F-A86D-F7DC-7D52-8EEC37D51078"/>
+</associations>
+</Column>
+<Column name="STUDENT_index" id="BF4E7AE8-1F68-D77D-E923-1B29B920DD46">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>DF7C7B15-75A1-01FC-E9AC-5C05426C7C9B</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E43B0AB9-35F2-4F54-1995-43727BE94894" referredColumn="80100823-5A31-5548-40E2-0AD39C0EAC16"/>
+</associations>
+</Column>
+<Column name="datum" id="2D26E137-E074-D408-B6D5-1FD21A261C1A">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>6F2B4D3F-EF59-6E8A-E42F-7DB18981548D</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8847C62B-E2EA-4134-9379-FF719E106D78" name="ISPIT_PK">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>B6E52E32-6BB0-1D8F-3D6C-0F433BF68B88</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="752235F1-31D1-27D3-E1F3-9954681C06FE"/>
+<colUsage columnID="6EBAF9A3-4833-85B9-29A6-9CB25A3C7330"/>
+<colUsage columnID="D7A3A847-6749-9D8E-0311-C197908F3F4D"/>
+<colUsage columnID="BF4E7AE8-1F68-D77D-E923-1B29B920DD46"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FEBF8B08-F972-F707-D8CA-68991AECE5D1" name="ISPIT_PREDMET_FK">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>C137E445-768F-8F83-AEAE-FEEEDD35A920</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D7A3A847-6749-9D8E-0311-C197908F3F4D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="99073A3E-9EF4-E1A2-60D6-D29781DBEBF3" name="ISPIT_STUDENT_FK">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>2DAAD501-0D1B-8082-1D7F-A548C31C964D</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BF4E7AE8-1F68-D77D-E923-1B29B920DD46"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
