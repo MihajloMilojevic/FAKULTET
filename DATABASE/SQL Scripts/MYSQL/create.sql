@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS admini(
 
 CREATE TABLE IF NOT EXISTS korisnici(
 	mejl VARCHAR(70) NOT NULL PRIMARY KEY,
-	lozinka VARCHAR(50) NOT NULL,
+	lozinka VARCHAR(100) NOT NULL,
 	uloga VARCHAR(50) NOT NULL CHECK (uloga IN('admin', 'profesor', 'student')),
 	id_profesora INT REFERENCES	profesori(id_profesora0),
 	broj_indeksa VARCHAR(20) REFERENCES studenti(broj_indeksa),
