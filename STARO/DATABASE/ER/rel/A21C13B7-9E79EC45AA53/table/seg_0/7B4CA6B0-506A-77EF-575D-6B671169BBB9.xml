@@ -1,0 +1,103 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7B4CA6B0-506A-77EF-575D-6B671169BBB9" name="ZAVISNOST">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>82BC7929-5AA9-66F3-90C8-0DF1CC2F7000</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_predmeta_od" id="638787F6-9E79-9D88-021B-0D83D5B260A5">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>BB0FE5BB-9624-C2A5-822C-16BF93572378</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_predmeta_ko" id="C205CCBD-2E5A-42DF-932A-F60539541C9C">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>3008FF4F-4D81-6D80-0E6E-F085427005D3</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PREDMET_id_predmeta" id="35CB6358-DFD0-FFE0-D01A-72B5B966A657">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>2D4C35A6-3229-C9C6-5B71-C2F4C2CFA0A1</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C193696B-DA68-6411-76E5-C97DFC60D3DD" referredColumn="4875BD1F-A86D-F7DC-7D52-8EEC37D51078"/>
+</associations>
+</Column>
+<Column name="PREDMET_id_predmeta1" id="46BEBF03-B82A-B030-E69F-1C34B368078B">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>8003D1C3-BC18-FAAB-1762-EB3C8B532AB6</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="382AED68-3C08-4665-4556-17BDF47230DF" referredColumn="4875BD1F-A86D-F7DC-7D52-8EEC37D51078"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="DAE4703F-A14D-BAC6-412E-F8AF6FCB4A69" name="ZAVISNOST_PK">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>13CCFD5A-9EC0-ED2F-E99C-AC9CD20D9D7B</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="638787F6-9E79-9D88-021B-0D83D5B260A5"/>
+<colUsage columnID="C205CCBD-2E5A-42DF-932A-F60539541C9C"/>
+<colUsage columnID="35CB6358-DFD0-FFE0-D01A-72B5B966A657"/>
+<colUsage columnID="46BEBF03-B82A-B030-E69F-1C34B368078B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1086DF91-B42A-A658-E6E0-0AE62FBDED09" name="ZAVISNOST_PREDMET_FK">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>952A1946-03FC-696C-7CE4-A50799D6C1A9</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="35CB6358-DFD0-FFE0-D01A-72B5B966A657"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FB8B1F69-4AA5-39C9-ADF3-25A5CFEC6036" name="ZAVISNOST_PREDMET_FKv1">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>B81C52E5-69F4-8C09-857D-40C5687E354D</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="46BEBF03-B82A-B030-E69F-1C34B368078B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

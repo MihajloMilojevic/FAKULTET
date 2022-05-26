@@ -1,0 +1,3 @@
+npm install cross-env express next react react-router-dom 
+@mihajlomilojevic/mysql-like-mongo 
+jsonwebtoken bcryptjs http-status-codes serverless-mysql express-async-errors cors dotenv express-rate-limit helmet xss-clean cookie-parser

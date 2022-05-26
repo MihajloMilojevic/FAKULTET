@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="C4B9DD69-5F7C-03BB-6387-8BA1C8429997" containerWithKeyObject="91DE2193-B303-1CEE-4814-2236276E4726" localFKIndex="A50052C5-6BC4-6263-54A2-500DDA4E07B6" name="PREDMET_SMER_FK">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>4C9C9BA9-7D24-5883-30C6-2D94ADE42BFA</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<referredTableLongName>SMER</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>75BDCD48-6C28-5D57-3EC6-47F306E0032B</referredTableID>
+<keyObject>97E9F423-DDA4-4609-2C7E-85268C098882</keyObject>
+<referredKeyID>97E9F423-DDA4-4609-2C7E-85268C098882</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_smera</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

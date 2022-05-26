@@ -1,0 +1,13 @@
+DROP TABLE slusanja;
+DROP TABLE ispiti;
+DROP TABLE zavisnosti;
+DROP TABLE predmeti;
+DROP TABLE studenti;
+DROP TABLE profesori;
+DROP TABLE gradovi;
+DROP TABLE smerovi;
+DROP TABLE grupe;
+DROP SEQUENCE predmeti_id_seq;
+DROP SEQUENCE profesori_id_seq;
+DROP SEQUENCE grupe_id_seq;
+DROP SEQUENCE smerovi_id_seq;

@@ -1,0 +1,134 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="91DE2193-B303-1CEE-4814-2236276E4726" name="PREDMET">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>C7E314BA-3495-398F-DA3B-626CB6AAD77F</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_predmeta" id="4875BD1F-A86D-F7DC-7D52-8EEC37D51078">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>D96D0716-8237-B554-FF84-EC8BC3116EB0</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="naziv" id="3DC1B150-5DFE-4596-4DF0-02553E275784">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>901026CD-468E-3E7F-C4CC-74BA656D33C5</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_smera" id="97D5D985-B717-ED98-6617-9620F57BBE50">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>5CB7FE69-2442-1030-EF46-1C91F541AB22</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_profesora" id="2D687EFD-2DC7-BD38-ED79-8D151D23AD7A">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>D8E2BFD9-CD08-3E17-3336-DCA69338A9C3</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nedeljni_fond" id="AC33C10E-38F1-E93D-52D7-5C07ABB9ACD8">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>10A69A07-66BA-C751-9EAB-0A717F2DC85C</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PROFESOR_id_profesora" id="6D4D6F74-5371-1807-12F8-2FDCC50E5D18">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>61C6AFEB-EC50-637B-E6B7-6AC8DC2F3968</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DF4E0060-9D57-A9D5-9540-5161E7971EFA" referredColumn="2E0A08FD-A128-7BB6-BCBF-D805724B6431"/>
+</associations>
+</Column>
+<Column name="SMER_id_smera" id="50513BBA-9DD2-1FA3-0445-5F5FB2DB91A1">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>57A2B539-98E7-514C-9BFA-A0BA5CE1B5D9</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C4B9DD69-5F7C-03BB-6387-8BA1C8429997" referredColumn="CF0CBEBC-FAFE-56E6-78E1-F93411B81F85"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0A65AB62-11FB-637C-E99F-E7304B6F8B25" name="PREDMET_PK">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>5A5C0D95-AE55-06A9-F155-2C25F5756D27</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4875BD1F-A86D-F7DC-7D52-8EEC37D51078"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="652C640C-B66D-E167-08E6-F2255A269A10" name="PREDMET_PROFESOR_FK">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>1185C5EA-6450-DFED-DAA1-9AA560783FF0</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6D4D6F74-5371-1807-12F8-2FDCC50E5D18"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A50052C5-6BC4-6263-54A2-500DDA4E07B6" name="PREDMET_SMER_FK">
+<createdBy>PC</createdBy>
+<createdTime>2022-05-25 13:11:51 UTC</createdTime>
+<generatorID>4C9C9BA9-7D24-5883-30C6-2D94ADE42BFA</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="50513BBA-9DD2-1FA3-0445-5F5FB2DB91A1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

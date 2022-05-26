@@ -1,0 +1,87 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="487869C1-6B6A-9C99-31C3-E068DE24E1D6" name="SLUŠANJE">
+<createdBy>PC</createdBy>
+<createdTime>2022-04-20 15:10:44 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="index" id="2F8654B4-CBD1-E374-B068-8AB3BAB81715">
+<createdBy>PC</createdBy>
+<createdTime>2022-04-20 15:11:11 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_predmeta" id="9EB12AF7-5293-D27B-DE6A-AD9C7FB2D205">
+<createdBy>PC</createdBy>
+<createdTime>2022-04-20 15:12:42 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_predmeta1" id="39DD868F-CAF3-C2EF-315E-F572835DA13F">
+<createdBy>PC</createdBy>
+<createdTime>2022-04-20 15:32:46 UTC</createdTime>
+<generatorID>C7D7CE96-6303-8CDC-D96D-E107E690713D</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<referedAttribute>D96D0716-8237-B554-FF84-EC8BC3116EB0</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="index1" id="227CD969-F39C-C7AF-E05A-DEB31194DCDD">
+<createdBy>PC</createdBy>
+<createdTime>2022-04-20 15:32:58 UTC</createdTime>
+<generatorID>13F9EEA2-B71D-45BB-5FB4-C5D065D63E47</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<referedAttribute>E418FFE5-8435-2218-9B2E-75BCE312BCFC</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="48C0489C-BE7F-0C9E-676F-B34745E561A0" name="SLUŠANJE PK">
+<createdBy>PC</createdBy>
+<createdTime>2022-04-20 15:12:44 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>2F8654B4-CBD1-E374-B068-8AB3BAB81715</attributeRef>
+<attributeRef>9EB12AF7-5293-D27B-DE6A-AD9C7FB2D205</attributeRef>
+<attributeRef>39DD868F-CAF3-C2EF-315E-F572835DA13F</attributeRef>
+<attributeRef>227CD969-F39C-C7AF-E05A-DEB31194DCDD</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

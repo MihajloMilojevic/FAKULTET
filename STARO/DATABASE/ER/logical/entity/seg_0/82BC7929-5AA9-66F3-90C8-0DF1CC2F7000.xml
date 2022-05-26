@@ -1,0 +1,88 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="82BC7929-5AA9-66F3-90C8-0DF1CC2F7000" name="ZAVISNOST">
+<createdBy>PC</createdBy>
+<createdTime>2022-04-20 15:13:17 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_predmeta_od" id="BB0FE5BB-9624-C2A5-822C-16BF93572378">
+<createdBy>PC</createdBy>
+<createdTime>2022-04-20 15:14:24 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_predmeta_ko" id="3008FF4F-4D81-6D80-0E6E-F085427005D3">
+<createdBy>PC</createdBy>
+<createdTime>2022-04-20 15:14:42 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_predmeta" id="2D4C35A6-3229-C9C6-5B71-C2F4C2CFA0A1">
+<createdBy>PC</createdBy>
+<createdTime>2022-04-20 15:26:15 UTC</createdTime>
+<generatorID>952A1946-03FC-696C-7CE4-A50799D6C1A9</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<referedAttribute>D96D0716-8237-B554-FF84-EC8BC3116EB0</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_predmeta1" id="8003D1C3-BC18-FAAB-1762-EB3C8B532AB6">
+<createdBy>PC</createdBy>
+<createdTime>2022-04-20 15:26:59 UTC</createdTime>
+<generatorID>B81C52E5-69F4-8C09-857D-40C5687E354D</generatorID>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<referedAttribute>D96D0716-8237-B554-FF84-EC8BC3116EB0</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="13CCFD5A-9EC0-ED2F-E99C-AC9CD20D9D7B" name="ZAVISNOST PK">
+<createdBy>PC</createdBy>
+<createdTime>2022-04-20 15:14:41 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>BB0FE5BB-9624-C2A5-822C-16BF93572378</attributeRef>
+<attributeRef>3008FF4F-4D81-6D80-0E6E-F085427005D3</attributeRef>
+<attributeRef>2D4C35A6-3229-C9C6-5B71-C2F4C2CFA0A1</attributeRef>
+<attributeRef>8003D1C3-BC18-FAAB-1762-EB3C8B532AB6</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
