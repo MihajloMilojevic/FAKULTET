@@ -30,7 +30,7 @@ const schema = mysqlLikeMongo.Schema({
 		type: mysqlLikeMongo.DataTypes.STRING,
 		mutable: false
 	},
-	id_prefesore: {
+	id_profesora: {
 		type: mysqlLikeMongo.DataTypes.INTEGER,
 		mutable: false
 	},

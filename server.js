@@ -13,8 +13,8 @@ require("express-async-errors"); // ERROR WRAPPER
 // const xss = require('xss-clean');
 // const rateLimiter = require('express-rate-limit');
 const cookieParser = require("cookie-parser");
-const auth = require('./DATABASE/middleware/authentication');
-const errorHandler = require("./DATABASE/middleware/errorHandler")
+const auth = require('./middleware/authentication');
+const errorHandler = require("./middleware/errorHandler")
 
 app.prepare().then(() => {
   const server = express()
