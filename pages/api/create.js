@@ -7,15 +7,15 @@ import { Korisnik, Admin } from "../../models";
 
 async function Resolver(req, res) {
 	const admin = new Admin({
-        jmbg: "0405008780021",
+        jmbg: "0505008780021",
         ime: "Djordje",
         prezime: "Milojevic",
-        mejl: "djordjemilojevic@gmail.com",
+        mejl: "djordjhjemilojevic@gmail.com",
         adresa: "8. mart 70",
         telefon: "0649781191"
     });
     // await admin.hash();
     const result = await admin.insert();
-    res.json(result)
+    res.json(admin)
 }
 export default errorWrapper(Resolver);

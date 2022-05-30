@@ -174,7 +174,7 @@ BEGIN
     SET mesec = mesecIzJMBG(jmbg);
     SET godina = godinaIzJMBG(jmbg);
     
-	IF LENGTH(jmbg) <> 13 OR mesec NOT BETWEEN 1 AND 12 OR dan <> brojDanaUMesecu(mesec, godina)
+	IF LENGTH(jmbg) <> 13 OR mesec NOT BETWEEN 1 AND 12 OR dan > brojDanaUMesecu(mesec, godina)
     	THEN RETURN 0;
     END IF;
     RETURN 1;
