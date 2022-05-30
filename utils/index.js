@@ -1,3 +1,4 @@
 import setCookies from "./setCookies"
+import serialize from "./serialize"
 
-export {setCookies};
+export {setCookies, serialize};

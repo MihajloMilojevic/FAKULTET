@@ -3,7 +3,6 @@ import {login} from "../../controllers/korisnik";
 import {setCookies} from "../../utils";
 import errorWrapper from "../../middleware/errorWrapper";
 import { StatusCodes } from "http-status-codes";
-import { Korisnik } from "../../models";
 
 async function Resolver(req, res) {
 	switch (req.method) {

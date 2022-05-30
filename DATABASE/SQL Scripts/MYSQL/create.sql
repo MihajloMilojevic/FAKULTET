@@ -291,6 +291,8 @@ DELIMITER ;
 INSERT INTO `admini` (`jmbg`, `ime`, `prezime`, `mejl`, `adresa`, `telefon`) 
 VALUES ('3105004780024', 'Mihajlo', 'Milojevic', 'milojevicm374@gmail.com', '8. mart 70', '0649781191');
 
+INSERT INTO `korisnici` (`mejl`, `lozinka`, `uloga`, `id_profesora`, `broj_indeksa`, `id_admina`) VALUES
+('milojevicm374@gmail.com', '$2a$10$qDcUywExzM4vOa4/ZXEW9efYiPc5I/FVkK8zM2hd/K0WY7lvA99IG', 'admin', NULL, NULL, 1);
 
 
 
