@@ -13,7 +13,11 @@ async function Resolver(req, res) {
 			if(!lozinka)
 				throw new Errors.BadRequestError("Lozinka je obavezna");
 			const korisnik = await login({mejl, lozinka});
-			setCookies(res, korisnik)
+			const token = await korisnik.token()
+			setCookies(res, [{
+				kljuc: "token",
+				vrednost: token
+			}])
 			res.status(StatusCodes.OK).json({ok: true, korisnik})
 			break;
 		default:

@@ -1,13 +1,13 @@
-import {Grupa} from "../../models";
+import {Admin, Grupa} from "../../models";
 import Auth from "../../middleware/authentication";
 import errorWrapper from "../../middleware/errorWrapper";
 import { StatusCodes } from "http-status-codes";
 
 async function Fun(req, res) {
-	await Auth(req, res);
-	console.log("START");
+	// await Auth(req, res);
+	// console.log("START");
 	//  res.json("GRUPE");
-	const data = await Grupa.find({});
+	const data = await Admin.find({});
 	res.status(StatusCodes.OK).json({...data} /*|| JSON.stringify(data)*/);
 }
 

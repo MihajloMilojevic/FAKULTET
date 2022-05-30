@@ -1,12 +1,10 @@
-const {Korisnik} = require("../models");
 
-const attachCookies = ( res, korisnik, expires ) => {
-	const token = korisnik.token();
-  
-	res.cookie('token', token, {
-	  httpOnly: true,
-	  expires
-	});
+const attachCookies = ( res, arr, options = {} ) => {
+	for(let i = 0; i < arr.length; i++)
+		res.cookie(arr[i].kljuc, arr[i].vrednost, {
+			httpOnly: true,
+			...options
+		});
   };
 
 module.exports = attachCookies;
