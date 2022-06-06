@@ -8,7 +8,7 @@
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
-    "@mihajlomilojevic/mysql-like-mongo": "^1.1.1",
+    "@mihajlomilojevic/mysql-like-mongo": "^1.2.0",
     "@mui/material": "^5.8.1",
     "@mui/x-data-grid": "^5.11.1",
     "bcryptjs": "^2.4.3",
