@@ -4,6 +4,7 @@ import {serialize} from "../utils/index";
 import { useRouter } from "next/router";
 import { Predmet } from "../models";
 import mysqlLikeMongo from "@mihajlomilojevic/mysql-like-mongo";
+import Link from "next/link";
 
 export default function Home({korisnik}) {
 	
@@ -26,6 +27,9 @@ export default function Home({korisnik}) {
 			}>LOGOUT</button> <br/>
 			<p>Dashboard</p>
 			<p>Zdravo: {korisnik.ime} {korisnik.prezime}</p>
+			<Link href="/gradovi">Gradovi</Link> <br/>
+			<Link href="/grupe">Grupe</Link> <br/>
+			<Link href="/smerovi">Smerovi</Link> <br/>
 		</>
 	)
 }

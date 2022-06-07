@@ -1,6 +1,5 @@
 import Auth from "../middleware/authentication";
 import Authorize from "../middleware/authorize";
-import { Grad } from "../models";
 
 import { DataGrid } from '@mui/x-data-grid';
 import Button from '@mui/material/Button';
@@ -12,37 +11,41 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 import { serialize } from "../utils";
-import useFetch from "../hooks/useFetch";
 import { useState, useRef } from "react";
 
-export default function Gradovi({gradovi}) {
+// https://codesandbox.io/s/skp0x7?file=/demo.js 
 
+export default function Smerovi({smerovi, grupe}) {
+
+	console.log({smerovi, grupe});
 	const [selectionModel, setSelectionModel] = useState([]);
-	const [listaGradova, setListaGradova] = useState(gradovi);
+	const [listaGrupa, setListaGrupa] = useState(smerovi);
 	const [createDialogOpen, setCreateDialogOpen] = useState(false);
-	const [createGradFormData, setCreateDialogFormData] = useState({
-		naziv: ""
+	const [createGrupaFormData, setCreateDialogFormData] = useState({
+		naziv: "",
+		id_grupe: ""
 	})
 
 	const zaglavlje = [
-		{ field: 'id', headerName: 'ID', width: "auto" },
-		{ field: 'naziv', headerName: 'NAZIV', flex: 1}
+		{ field: 'id', headerName: 'ID' },
+		{ field: 'naziv_smera', headerName: 'NAZIV SMERA', flex: 1},
+		{ field: 'naziv_grupe', headerName: 'NAZIV GRUPE', flex: 1}
 	];
 
-	async function fetchGradove() {
+	async function fetchGrupe() {
 		try {
-			const res = await fetch("/api/gradovi");
+			const res = await fetch("/api/grupa");
 			const data = await res.json();
 			if(!data.ok)
 				throw new Error(data.message);
-			setListaGradova(data.gradovi);
+			setListaGrupa(data.grupe);
 		} catch (error) {
 			alert(error.message);
 		}
 	}
 	async function Delete() {
 		try {
-			let res = await fetch("/api/gradovi/delete-many", {
+			let res = await fetch("/api/grupa/delete-many", {
 				headers: {
 					"Content-Type": "application/json"
 				},
@@ -52,7 +55,7 @@ export default function Gradovi({gradovi}) {
 			let data = await res.json();
 			if(!data.ok)
 				throw new Error(data.message);
-			await fetchGradove();
+			await fetchGrupe();
 			alert("Uspesno obrisano");
 		}
 		catch(error) {
@@ -60,9 +63,9 @@ export default function Gradovi({gradovi}) {
 		}
 	}
 
-	async function createGrad(data) {
+	async function createGrupa(data) {
 		try {
-			const json = await fetch("/api/gradovi", {
+			const json = await fetch("/api/grupa", {
 				headers: {
 					"Content-Type": "application/json"
 				},
@@ -84,24 +87,24 @@ export default function Gradovi({gradovi}) {
 
 	const handleCreateDialogFormDataChange = e => {
 		setCreateDialogFormData({
-			...createGradFormData,
+			...createGrupaFormData,
 			[e.target.name]: e.target.value
 		})
 	}
 
 	const handleCreateDialogConfirm = async () => {
-		await createGrad(createGradFormData);
-		await fetchGradove();
+		await createGrupa(createGrupaFormData);
+		await fetchGrupe();
 		setCreateDialogOpen(false);
 		setCreateDialogFormData({
-			id_grada: "",
+			id_grupe: "",
 			naziv: ""
 		})
 	}
 
 	return (
 		<div>
-			<h1>GRADOVI</h1>
+			<h1>Grupe</h1>
 			<Button
 				onClick={Delete}
 			>
@@ -113,9 +116,10 @@ export default function Gradovi({gradovi}) {
 			  DODAJ
 			</Button>
 			<DataGrid
-				rows={listaGradova.map(el => ({
-					id: el.id_grada, 
-					naziv: el.naziv
+				rows={listaGrupa.map(el => ({
+					id: el.id_smera, 
+					naziv_smera: el.naziv_smera,
+					naziv_grupe: el.naziv_grupe
 				}))}
 				columns={zaglavlje}
 				pageSize={10}
@@ -132,28 +136,17 @@ export default function Gradovi({gradovi}) {
 			/>
 
 			<Dialog open={createDialogOpen}>
-				<DialogTitle>Dodaj grad</DialogTitle>
-				<DialogContent>					
-					<TextField
-					name="id_grada"
-					margin="dense"
-					id="id_grada"
-					label="Id grada"
-					type="text"
-					fullWidth
-					variant="standard"
-					value={createGradFormData.id_grada}
-					onChange={handleCreateDialogFormDataChange}
-					/>
+				<DialogTitle>Dodaj grupu</DialogTitle>
+				<DialogContent>
 					<TextField
 					name="naziv"
 					margin="dense"
-					id="id_grada"
-					label="Naziv grada"
+					id="naziv"
+					label="Naziv smera"
 					type="text"
 					fullWidth
 					variant="standard"
-					value={createGradFormData.naziv}
+					value={createGrupaFormData.naziv}
 					onChange={handleCreateDialogFormDataChange}
 					/>
 				</DialogContent>
@@ -168,11 +161,23 @@ export default function Gradovi({gradovi}) {
 }
 
 export async function getServerSideProps({req, res}) {
+	
+	//const  mysqlLikeMongo = require("@mihajlomilojevic/mysql-like-mongo");
+	
+	const { Grupa, Smer } = require("../models");
+
 	try {
 		const user = await Auth(req, res);
 		await Authorize(user, ["admin"]);
-		const {data, error} = await Grad.find({});
-		const props = {gradovi: serialize(data)};
+		const {data: grupe} = await Grupa.find({});
+		const {data: smerovi} = await Smer.query(
+			`SELECT s.id_smera, s.naziv AS naziv_smera, g.naziv AS naziv_grupe ` +
+			`FROM smerovi s JOIN grupe g USING(id_grupe)` 
+		)
+		const props = {
+			grupe: serialize(grupe),
+			smerovi: serialize(smerovi)
+		};
 		return {props};
 	} catch (error) {
 		return {

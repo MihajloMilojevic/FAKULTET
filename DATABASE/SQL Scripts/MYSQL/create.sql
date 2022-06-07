@@ -1,10 +1,12 @@
 CREATE DATABASE IF NOT EXISTS fakultet CHARACTER SET UTF8 COLLATE utf8_bin;
 USE fakultet;
 
+-- TABELE --
 CREATE TABLE IF NOT EXISTS grupe(
-	id_grupe INT AUTO_INCREMENT PRIMARY KEY ,
+	id_grupe INT AUTO_INCREMENT PRIMARY KEY,
 	naziv VARCHAR(100) NOT NULL
 );
+
 
 CREATE TABLE IF NOT EXISTS smerovi(
 	id_smera INT AUTO_INCREMENT PRIMARY KEY,
@@ -87,6 +89,8 @@ CREATE TABLE IF NOT EXISTS korisnici(
 		  (id_profesora IS NULL AND broj_indeksa IS NOT NULL AND id_admina IS NULL AND uloga = 'student') OR
 		  (id_profesora IS NOT NULL AND broj_indeksa IS NULL AND id_admina IS NULL AND uloga = 'profesor'))
 );
+
+-- FUNKCIJE --
 
 DELIMITER //
 
@@ -185,6 +189,8 @@ RETURNS INT
 BEGIN
 	RETURN ((SELECT COUNT(*) FROM slusanja WHERE broj_indeksa = broj_indeksa_in AND id_predmeta = id_predmeta_in) = 1);
 END; //
+
+-- OKIDAČI --
 
 CREATE TRIGGER IF NOT EXISTS slusanja_before_insert
 BEFORE INSERT
@@ -288,29 +294,9 @@ END; //
 
 DELIMITER ;
 
-INSERT INTO `admini` (`jmbg`, `ime`, `prezime`, `mejl`, `adresa`, `telefon`) 
-VALUES ('3105004780024', 'Mihajlo', 'Milojevic', 'milojevicm374@gmail.com', '8. mart 70', '0649781191');
+-- PODACI --
 
-INSERT INTO `korisnici` (`mejl`, `lozinka`, `uloga`, `id_profesora`, `broj_indeksa`, `id_admina`) VALUES
-('milojevicm374@gmail.com', '$2a$10$qDcUywExzM4vOa4/ZXEW9efYiPc5I/FVkK8zM2hd/K0WY7lvA99IG', 'admin', NULL, NULL, 1);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-- GRADOVI -- 
 INSERT INTO gradovi (id_grada, naziv)
 VALUES(24430, 'Ada');
 
@@ -799,3 +785,66 @@ VALUES(23210, 'Žitište');
 
 INSERT INTO gradovi (id_grada, naziv)
 VALUES(18412, 'Žitorađa');
+
+-- GRUPE --
+
+INSERT INTO grupe(naziv)
+VALUES('Menadžment i organizacija');
+
+INSERT INTO grupe(naziv)
+VALUES('Elektrotehničko i računarsko inženjerstvo');
+
+INSERT INTO grupe(naziv)
+VALUES('Arhitektura');
+
+INSERT INTO grupe(naziv)
+VALUES('Biomedicinsko inženjerstvo');
+
+INSERT INTO grupe(naziv)
+VALUES('Energetske tehnologije');
+
+INSERT INTO grupe(naziv)
+VALUES('Geodetsko inženjerstvo');
+
+INSERT INTO grupe(naziv)
+VALUES('Grafičko inženjerstvo i dizajn');
+
+INSERT INTO grupe(naziv)
+VALUES('Građevinsko inženjerstvo');
+
+INSERT INTO grupe(naziv)
+VALUES('Industrijsko inženjerstvo');
+
+INSERT INTO grupe(naziv)
+VALUES('Inženjerstvo zaštite od katastrofalnih događaja i požara');
+
+INSERT INTO grupe(naziv)
+VALUES('Inženjerstvo zaštite životne sredine i zaštite na radu');
+
+INSERT INTO grupe(naziv)
+VALUES('Mašinsko inženjerstvo');
+
+INSERT INTO grupe(naziv)
+VALUES('Mehatronika');
+
+INSERT INTO grupe(naziv)
+VALUES('Računarska grafika');
+
+INSERT INTO grupe(naziv)
+VALUES('Saobraćajno inženjerstvo');
+
+INSERT INTO grupe(naziv)
+VALUES('Scenska arhitektura, tehnika i dizajn');
+
+INSERT INTO grupe(naziv)
+VALUES('Jezik, književnost, kultura');
+
+-- ADMINISTRATORI --
+
+INSERT INTO `admini` (`jmbg`, `ime`, `prezime`, `mejl`, `adresa`, `telefon`) 
+VALUES ('3105004780024', 'Mihajlo', 'Milojevic', 'milojevicm374@gmail.com', '8. mart 70', '0649781191');
+
+-- KORISNICI --
+
+INSERT INTO `korisnici` (`mejl`, `lozinka`, `uloga`, `id_profesora`, `broj_indeksa`, `id_admina`) VALUES
+('milojevicm374@gmail.com', '$2a$10$qDcUywExzM4vOa4/ZXEW9efYiPc5I/FVkK8zM2hd/K0WY7lvA99IG', 'admin', NULL, NULL, 1);

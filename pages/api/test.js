@@ -7,7 +7,7 @@ async function Fun(req, res) {
 	// await Auth(req, res);
 	// console.log("START");
 	//  res.json("GRUPE");
-	const data = await Admin.find({});
+	const data = await Grupa.create();
 	res.status(StatusCodes.OK).json({...data} /*|| JSON.stringify(data)*/);
 }
 
