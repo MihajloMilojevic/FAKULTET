@@ -8,12 +8,10 @@ import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 import { serialize } from "../utils";
-import useFetch from "../hooks/useFetch";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 export default function Gradovi({gradovi}) {
 
@@ -25,7 +23,7 @@ export default function Gradovi({gradovi}) {
 	})
 
 	const zaglavlje = [
-		{ field: 'id', headerName: 'ID', width: "auto" },
+		{ field: 'id', headerName: 'ID' },
 		{ field: 'naziv', headerName: 'NAZIV', flex: 1}
 	];
 
@@ -42,7 +40,7 @@ export default function Gradovi({gradovi}) {
 	}
 	async function Delete() {
 		try {
-			let res = await fetch("/api/gradovi/delete-many", {
+			let res = await fetch("/api/gradovi", {
 				headers: {
 					"Content-Type": "application/json"
 				},

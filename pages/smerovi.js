@@ -7,45 +7,45 @@ import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
 import { serialize } from "../utils";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 // https://codesandbox.io/s/skp0x7?file=/demo.js 
 
 export default function Smerovi({smerovi, grupe}) {
 
-	console.log({smerovi, grupe});
 	const [selectionModel, setSelectionModel] = useState([]);
-	const [listaGrupa, setListaGrupa] = useState(smerovi);
+	const [listaSmerova, setListaSmerova] = useState(smerovi);
 	const [createDialogOpen, setCreateDialogOpen] = useState(false);
-	const [createGrupaFormData, setCreateDialogFormData] = useState({
+	const [createDialogFormData, setCreateDialogFormData] = useState({
 		naziv: "",
 		id_grupe: ""
 	})
 
 	const zaglavlje = [
 		{ field: 'id', headerName: 'ID' },
-		{ field: 'naziv_smera', headerName: 'NAZIV SMERA', flex: 1},
-		{ field: 'naziv_grupe', headerName: 'NAZIV GRUPE', flex: 1}
+		{ field: 'naziv', headerName: 'NAZIV', flex: 1},
+		{ field: 'grupa', headerName: 'GRUPA', flex: 1}
 	];
 
 	async function fetchGrupe() {
 		try {
-			const res = await fetch("/api/grupa");
+			const res = await fetch("/api/smerovi");
 			const data = await res.json();
 			if(!data.ok)
 				throw new Error(data.message);
-			setListaGrupa(data.grupe);
+			setListaSmerova(data.smerovi);
 		} catch (error) {
 			alert(error.message);
 		}
 	}
 	async function Delete() {
 		try {
-			let res = await fetch("/api/grupa/delete-many", {
+			let res = await fetch("/api/smerovi", {
 				headers: {
 					"Content-Type": "application/json"
 				},
@@ -63,9 +63,9 @@ export default function Smerovi({smerovi, grupe}) {
 		}
 	}
 
-	async function createGrupa(data) {
+	async function createSmer(data) {
 		try {
-			const json = await fetch("/api/grupa", {
+			const json = await fetch("/api/smerovi", {
 				headers: {
 					"Content-Type": "application/json"
 				},
@@ -87,13 +87,13 @@ export default function Smerovi({smerovi, grupe}) {
 
 	const handleCreateDialogFormDataChange = e => {
 		setCreateDialogFormData({
-			...createGrupaFormData,
+			...createDialogFormData,
 			[e.target.name]: e.target.value
 		})
 	}
 
 	const handleCreateDialogConfirm = async () => {
-		await createGrupa(createGrupaFormData);
+		await createSmer(createDialogFormData);
 		await fetchGrupe();
 		setCreateDialogOpen(false);
 		setCreateDialogFormData({
@@ -104,7 +104,7 @@ export default function Smerovi({smerovi, grupe}) {
 
 	return (
 		<div>
-			<h1>Grupe</h1>
+			<h1>Smerovi</h1>
 			<Button
 				onClick={Delete}
 			>
@@ -116,10 +116,10 @@ export default function Smerovi({smerovi, grupe}) {
 			  DODAJ
 			</Button>
 			<DataGrid
-				rows={listaGrupa.map(el => ({
+				rows={listaSmerova.map(el => ({
 					id: el.id_smera, 
-					naziv_smera: el.naziv_smera,
-					naziv_grupe: el.naziv_grupe
+					naziv: el.naziv,
+					grupa: el.grupa
 				}))}
 				columns={zaglavlje}
 				pageSize={10}
@@ -145,10 +145,23 @@ export default function Smerovi({smerovi, grupe}) {
 					label="Naziv smera"
 					type="text"
 					fullWidth
+					multiline
 					variant="standard"
-					value={createGrupaFormData.naziv}
+					value={createDialogFormData.naziv}
 					onChange={handleCreateDialogFormDataChange}
 					/>
+					<Select
+						id="odabir-grupe"
+						value={createDialogFormData.id_grupe}
+						label="Grupa"
+						name="id_grupe"
+						onChange={handleCreateDialogFormDataChange}
+						fullWidth
+					>
+						{
+							grupe.map((grupa, id) => (<MenuItem key={`grupa-${id}`} value={grupa.id_grupe}>{grupa.naziv}</MenuItem>))
+						}
+					</Select>
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={handleCreateDialogClose}>Odustani</Button>
@@ -171,7 +184,7 @@ export async function getServerSideProps({req, res}) {
 		await Authorize(user, ["admin"]);
 		const {data: grupe} = await Grupa.find({});
 		const {data: smerovi} = await Smer.query(
-			`SELECT s.id_smera, s.naziv AS naziv_smera, g.naziv AS naziv_grupe ` +
+			`SELECT s.id_smera, s.naziv AS naziv, g.naziv AS grupa, g.id_grupe AS id_grupe ` +
 			`FROM smerovi s JOIN grupe g USING(id_grupe)` 
 		)
 		const props = {

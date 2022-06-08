@@ -3,6 +3,11 @@ import useFetch from "../hooks/useFetch";
 import { useRouter } from "next/router";
 import Auth from "../middleware/authentication";
 
+
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+
+
 export default function Home() {
 	const router = useRouter()
 	const [options, setOptions] = useState({
@@ -38,11 +43,25 @@ export default function Home() {
 	return (
 	  <>
 		<form onSubmit={handleSubmit} >
-			<label>Mejl: </label> <br/>
-			<input type="text" name="mejl" onChange={handleChange} value={formData.mejl}/> <br/>
-			<label>Lozinka: </label> <br/>
-			<input type="password" name="lozinka" onChange={handleChange} value={formData.lozinka}/> <br/>
-			<button type="submit">Prijavi se</button>
+			<TextField
+				name="mejl"
+				id="mejl"
+				label="Mejl"
+				type="text"
+				variant="standard"
+				value={formData.mejl}
+				onChange={handleChange}
+			/> <br/>
+			<TextField
+				name="lozinka"
+				id="lozinka"
+				label="Lozinka"
+				type="password"
+				variant="standard"
+				value={formData.lozinka}
+				onChange={handleChange}
+			/> <br/>
+			<Button type="submit">Prijavi se</Button>
 		</form>
 		<p>{!data?.ok ? data?.message : (error ? error.message : "")}</p>
 	</>

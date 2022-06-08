@@ -1,6 +1,6 @@
 import Auth from "../middleware/authentication";
 import Authorize from "../middleware/authorize";
-import { Grupa } from "../models";
+import { Profesor } from "../models";
 
 import { DataGrid } from '@mui/x-data-grid';
 import Button from '@mui/material/Button';
@@ -11,35 +11,44 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
 import { serialize } from "../utils";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
-export default function Grupe({grupe}) {
+export default function Grupe({profesori}) {
 	const [selectionModel, setSelectionModel] = useState([]);
-	const [listaGrupa, setListaGrupa] = useState(grupe);
+	const [listaProfesora, setListaProfesora] = useState(profesori);
 	const [createDialogOpen, setCreateDialogOpen] = useState(false);
 	const [createGrupaFormData, setCreateDialogFormData] = useState({
-		naziv: ""
+		jmbg: "",
+		ime: "",
+		prezime: "",
+		mejl: "",
+		adresa: "",
+		telefon: "",
+		plata: ""
 	})
 
 	const zaglavlje = [
 		{ field: 'id', headerName: 'ID' },
-		{ field: 'naziv', headerName: 'NAZIV', flex: 1}
+		{ field: 'ime', headerName: 'IME', flex: 1},
+		{ field: 'prezime', headerName: 'PREZIME', flex: 1},
+		{ field: 'mejl', headerName: 'MEJL', flex: 1},
+		{ field: 'telefon', headerName: 'TELEFON', flex: 1}
 	];
 
 	async function fetchGrupe() {
 		try {
-			const res = await fetch("/api/grupa");
+			const res = await fetch("/api/profesori");
 			const data = await res.json();
 			if(!data.ok)
 				throw new Error(data.message);
-			setListaGrupa(data.grupe);
+			setListaProfesora(data.profesori);
 		} catch (error) {
 			alert(error.message);
 		}
 	}
 	async function Delete() {
 		try {
-			let res = await fetch("/api/grupa", {
+			let res = await fetch("/api/profesori", {
 				headers: {
 					"Content-Type": "application/json"
 				},
@@ -59,7 +68,7 @@ export default function Grupe({grupe}) {
 
 	async function createGrupa(data) {
 		try {
-			const json = await fetch("/api/grupa", {
+			const json = await fetch("/api/profesori", {
 				headers: {
 					"Content-Type": "application/json"
 				},
@@ -91,7 +100,13 @@ export default function Grupe({grupe}) {
 		await fetchGrupe();
 		setCreateDialogOpen(false);
 		setCreateDialogFormData({
-			naziv: ""
+			jmbg: "",
+			ime: "",
+			prezime: "",
+			mejl: "",
+			adresa: "",
+			telefon: "",
+			plata: ""
 		})
 	}
 
@@ -109,9 +124,12 @@ export default function Grupe({grupe}) {
 			  DODAJ
 			</Button>
 			<DataGrid
-				rows={listaGrupa.map(el => ({
-					id: el.id_grupe, 
-					naziv: el.naziv
+				rows={listaProfesora.map(prof => ({
+					id: prof.id_profesora,
+					ime: prof.ime,
+					prezime: prof.prezime,
+					mejl: prof.mejl,
+					telefon: prof.telefon
 				}))}
 				columns={zaglavlje}
 				pageSize={10}
@@ -128,17 +146,83 @@ export default function Grupe({grupe}) {
 			/>
 
 			<Dialog open={createDialogOpen}>
-				<DialogTitle>Dodaj grupu</DialogTitle>
+				<DialogTitle>Dodaj profesora</DialogTitle>
 				<DialogContent>
 					<TextField
-					name="naziv"
+					name="jmbg"
 					margin="dense"
-					id="naziv"
-					label="Naziv grupe"
+					id="jmbg"
+					label="JMBG"
 					type="text"
 					fullWidth
 					variant="standard"
-					value={createGrupaFormData.naziv}
+					value={createGrupaFormData.jmbg}
+					onChange={handleCreateDialogFormDataChange}
+					/>
+					<TextField
+					name="ime"
+					margin="dense"
+					id="ime"
+					label="Ime"
+					type="text"
+					fullWidth
+					variant="standard"
+					value={createGrupaFormData.ime}
+					onChange={handleCreateDialogFormDataChange}
+					/>
+					<TextField
+					name="prezime"
+					margin="dense"
+					id="prezime"
+					label="Prezime"
+					type="text"
+					fullWidth
+					variant="standard"
+					value={createGrupaFormData.prezime}
+					onChange={handleCreateDialogFormDataChange}
+					/>
+					<TextField
+					name="mejl"
+					margin="dense"
+					id="mejl"
+					label="Mejl"
+					type="text"
+					fullWidth
+					variant="standard"
+					value={createGrupaFormData.mejl}
+					onChange={handleCreateDialogFormDataChange}
+					/>
+					<TextField
+					name="adresa"
+					margin="dense"
+					id="adresa"
+					label="Adresa"
+					type="text"
+					fullWidth
+					variant="standard"
+					value={createGrupaFormData.adresa}
+					onChange={handleCreateDialogFormDataChange}
+					/>
+					<TextField
+					name="telefon"
+					margin="dense"
+					id="telefon"
+					label="Telefon"
+					type="text"
+					fullWidth
+					variant="standard"
+					value={createGrupaFormData.telefon}
+					onChange={handleCreateDialogFormDataChange}
+					/>
+					<TextField
+					name="plata"
+					margin="dense"
+					id="plata"
+					label="Plata"
+					type="text"
+					fullWidth
+					variant="standard"
+					value={createGrupaFormData.plata}
 					onChange={handleCreateDialogFormDataChange}
 					/>
 				</DialogContent>
@@ -156,10 +240,17 @@ export async function getServerSideProps({req, res}) {
 	try {
 		const user = await Auth(req, res);
 		await Authorize(user, ["admin"]);
-		const {data, error} = await Grupa.find({});
-		const props = {grupe: serialize(data)};
+		const {data} = await Profesor.find({});
+		const props = {profesori: serialize(data.map(prof => ({
+			id_profesora: prof.id_profesora,
+			ime: prof.ime,
+			prezime: prof.prezime,
+			mejl: prof.mejl,
+			telefon: prof.telefon
+		})))};
 		return {props};
 	} catch (error) {
+		console.error(error);
 		return {
 			redirect: {
 				permanent: false,
