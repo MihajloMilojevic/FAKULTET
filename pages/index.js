@@ -31,6 +31,7 @@ export default function Home({korisnik}) {
 			<Link href="/grupe">Grupe</Link> <br/>
 			<Link href="/smerovi">Smerovi</Link> <br/>
 			<Link href="/profesori">Profesori</Link> <br/>
+			<Link href="/studenti">Studenti</Link> <br/>
 		</>
 	)
 }

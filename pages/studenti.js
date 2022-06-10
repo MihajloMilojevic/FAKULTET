@@ -1,6 +1,4 @@
-import Auth from "../middleware/authentication";
-import Authorize from "../middleware/authorize";
-import { Profesor } from "../models";
+
 
 import { DataGrid } from '@mui/x-data-grid';
 import Button from '@mui/material/Button';
@@ -13,9 +11,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { serialize } from "../utils";
 import { useState } from "react";
 
-export default function Profesori({profesori}) {
+export default function Studenti({studenti}) {
 	const [selectionModel, setSelectionModel] = useState([]);
-	const [listaProfesora, setListaProfesora] = useState(profesori);
+	const [listaStudenata, setListaStudenata] = useState(studenti);
 	const [createDialogOpen, setCreateDialogOpen] = useState(false);
 	const [createGrupaFormData, setCreateDialogFormData] = useState({
 		jmbg: "",
@@ -28,11 +26,12 @@ export default function Profesori({profesori}) {
 	})
 
 	const zaglavlje = [
-		{ field: 'id', headerName: 'ID' },
+		{ field: 'id', headerName: 'INDEKS' },
 		{ field: 'ime', headerName: 'IME', flex: 1},
 		{ field: 'prezime', headerName: 'PREZIME', flex: 1},
 		{ field: 'mejl', headerName: 'MEJL', flex: 1},
-		{ field: 'telefon', headerName: 'TELEFON', flex: 1}
+		{ field: 'grad', headerName: 'GRAD', flex: 1},
+		{ field: 'smer', headerName: 'SMER', flex: 1}
 	];
 
 	async function fetchGrupe() {
@@ -41,7 +40,7 @@ export default function Profesori({profesori}) {
 			const data = await res.json();
 			if(!data.ok)
 				throw new Error(data.message);
-			setListaProfesora(data.profesori);
+			setListaStudenata(data.profesori);
 		} catch (error) {
 			alert(error.message);
 		}
@@ -112,7 +111,7 @@ export default function Profesori({profesori}) {
 
 	return (
 		<div>
-			<h1>Profesori</h1>
+			<h1>Studenti</h1>
 			<Button
 				onClick={Delete}
 			>
@@ -124,12 +123,9 @@ export default function Profesori({profesori}) {
 			  DODAJ
 			</Button>
 			<DataGrid
-				rows={listaProfesora.map(prof => ({
-					id: prof.id_profesora,
-					ime: prof.ime,
-					prezime: prof.prezime,
-					mejl: prof.mejl,
-					telefon: prof.telefon
+				rows={listaStudenata.map(stud => ({
+					...stud,
+					id: stud.broj_indeksa
 				}))}
 				columns={zaglavlje}
 				pageSize={10}
@@ -238,16 +234,13 @@ export default function Profesori({profesori}) {
 
 export async function getServerSideProps({req, res}) {
 	try {
+		const Auth = require("../middleware/authentication");
+		const Authorize = require("../middleware/authorize");
+		const {sviStudenti} = require("../controllers/studenti")
 		const user = await Auth(req, res);
 		await Authorize(user, ["admin"]);
-		const {data} = await Profesor.find({});
-		const props = {profesori: serialize(data.map(prof => ({
-			id_profesora: prof.id_profesora,
-			ime: prof.ime,
-			prezime: prof.prezime,
-			mejl: prof.mejl,
-			telefon: prof.telefon
-		})))};
+		const {data} = await sviStudenti();
+		const props = {studenti: serialize(data)};
 		return {props};
 	} catch (error) {
 		console.error(error);
