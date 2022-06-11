@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C7E314BA-3495-398F-DA3B-626CB6AAD77F" name="PREDMET">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="7B01347B-AD81-CD75-64E7-B0360E0157A2" name="POLAGANJE">
 <createdBy>PC</createdBy>
-<createdTime>2022-04-20 14:41:37 UTC</createdTime>
+<createdTime>2022-06-10 16:43:54 UTC</createdTime>
 <ownerDesignName>ER</ownerDesignName>
 <engineerTo>
 <item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
@@ -15,21 +15,19 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_predmeta" id="D96D0716-8237-B554-FF84-EC8BC3116EB0">
+<Attribute name="id_polaganja" id="E31E93E5-CF41-0B5F-070E-19928DE4C2ED">
 <createdBy>PC</createdBy>
-<createdTime>2022-04-20 14:43:30 UTC</createdTime>
+<createdTime>2022-06-10 16:52:25 UTC</createdTime>
 <ownerDesignName>ER</ownerDesignName>
 <engineerTo>
 <item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
 </engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
+<use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="naziv" id="901026CD-468E-3E7F-C4CC-74BA656D33C5">
+<Attribute name="index" id="2ED443BF-3BA8-EE6D-2332-1E49A0D7FD8E">
 <createdBy>PC</createdBy>
-<createdTime>2022-04-20 14:44:44 UTC</createdTime>
+<createdTime>2022-06-10 16:44:03 UTC</createdTime>
 <ownerDesignName>ER</ownerDesignName>
 <engineerTo>
 <item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
@@ -37,85 +35,69 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>50,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="id_smera" id="5CB7FE69-2442-1030-EF46-1C91F541AB22">
-<createdBy>PC</createdBy>
-<createdTime>2022-04-20 14:52:21 UTC</createdTime>
-<ownerDesignName>ER</ownerDesignName>
-<engineerTo>
-<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_profesora" id="D8E2BFD9-CD08-3E17-3336-DCA69338A9C3">
+<Attribute name="id_ispita" id="F6DB923C-39A0-31B6-8DE8-649604970B98">
 <createdBy>PC</createdBy>
-<createdTime>2022-04-20 14:53:04 UTC</createdTime>
+<createdTime>2022-06-10 16:45:15 UTC</createdTime>
 <ownerDesignName>ER</ownerDesignName>
 <engineerTo>
 <item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
 </engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
+<use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="nedeljni_fond" id="10A69A07-66BA-C751-9EAB-0A717F2DC85C">
+<Attribute name="ocena" id="ACD0F222-2E4E-087C-9C1B-0912EC01BC6C">
 <createdBy>PC</createdBy>
-<createdTime>2022-04-20 14:53:20 UTC</createdTime>
+<createdTime>2022-06-10 16:47:08 UTC</createdTime>
 <ownerDesignName>ER</ownerDesignName>
 <engineerTo>
 <item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
 </engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_profesora1" id="61C6AFEB-EC50-637B-E6B7-6AC8DC2F3968">
+<Attribute name="id_ispita1" id="363A12CC-55DD-0A61-4588-BA0B52068B30">
 <createdBy>PC</createdBy>
-<createdTime>2022-04-20 15:23:18 UTC</createdTime>
-<generatorID>1185C5EA-6450-DFED-DAA1-9AA560783FF0</generatorID>
+<createdTime>2022-06-10 16:55:47 UTC</createdTime>
+<generatorID>60B6F162-9844-D4C2-55D5-7DB190A8289B</generatorID>
 <ownerDesignName>ER</ownerDesignName>
 <engineerTo>
 <item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
 </engineerTo>
-<referedAttribute>DB1F0CE5-FF3D-DA8A-5493-BA2910F03414</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
+<referedAttribute>EE410E26-9DB6-8A7E-F1C4-D7368EE9584E</referedAttribute>
+<use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_smera1" id="57A2B539-98E7-514C-9BFA-A0BA5CE1B5D9">
+<Attribute name="index1" id="EA9E0BFD-1C43-C946-C3F4-C4425E714307">
 <createdBy>PC</createdBy>
-<createdTime>2022-04-20 15:33:11 UTC</createdTime>
-<generatorID>4C9C9BA9-7D24-5883-30C6-2D94ADE42BFA</generatorID>
+<createdTime>2022-06-10 16:55:59 UTC</createdTime>
+<generatorID>5B26AD68-7284-2F66-A914-6E097897BBE2</generatorID>
 <ownerDesignName>ER</ownerDesignName>
 <engineerTo>
 <item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
 </engineerTo>
-<referedAttribute>0E38F155-8B51-D5F0-3016-43E6CD8A0E5B</referedAttribute>
+<referedAttribute>E418FFE5-8435-2218-9B2E-75BCE312BCFC</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="5A5C0D95-AE55-06A9-F155-2C25F5756D27" name="PREDMET PK">
+<identifier id="02BD6A69-DC25-258F-7574-AA2A632EF67E" name="POLAGANJE PK">
 <createdBy>PC</createdBy>
-<createdTime>2022-04-20 14:44:09 UTC</createdTime>
+<createdTime>2022-06-10 16:44:13 UTC</createdTime>
 <ownerDesignName>ER</ownerDesignName>
 <engineerTo>
 <item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>D96D0716-8237-B554-FF84-EC8BC3116EB0</attributeRef>
+<attributeRef>2ED443BF-3BA8-EE6D-2332-1E49A0D7FD8E</attributeRef>
+<attributeRef>E31E93E5-CF41-0B5F-070E-19928DE4C2ED</attributeRef>
+<attributeRef>EA9E0BFD-1C43-C946-C3F4-C4425E714307</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

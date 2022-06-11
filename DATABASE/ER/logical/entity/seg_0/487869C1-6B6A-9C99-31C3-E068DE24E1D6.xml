@@ -38,6 +38,16 @@
 <use>1</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="odslusano" id="AA31186A-4BB3-F79D-FC75-F3FD12DFC89E">
+<createdBy>PC</createdBy>
+<createdTime>2022-06-10 16:56:21 UTC</createdTime>
+<ownerDesignName>ER</ownerDesignName>
+<engineerTo>
+<item key="A21C13B7-44A3-4EE9-454D-9E79EC45AA53" value="true"/>
+</engineerTo>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="id_predmeta1" id="39DD868F-CAF3-C2EF-315E-F572835DA13F">
 <createdBy>PC</createdBy>
 <createdTime>2022-04-20 15:32:46 UTC</createdTime>
