@@ -1,8 +1,8 @@
 import {Profesor} from "../models"
 
 async function sviProfesori() {
-	const {data, error} = await Profesor.find({});
-	return {data, error};
+	const res = await Profesor.find({});
+	return res;
 }
 
 async function deleteMany(ids) {

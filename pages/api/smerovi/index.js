@@ -9,9 +9,7 @@ import Authorize from "../../../middleware/authorize"
 async function Resolver(req, res) {
 	switch (req.method) {
 		case "GET": {
-			const {data, error} = await sviSmerovi()
-			if(error)
-				throw error;
+			const data = await sviSmerovi()
 			return res.status(StatusCodes.OK).json({ok: true, smerovi: data});
 		}
 		case "POST":{
@@ -22,9 +20,7 @@ async function Resolver(req, res) {
 				throw new Errors.BadRequestError("Id grupe je obavezan");
 			if(!naziv)
 				throw new Errors.BadRequestError("Naziv smera je obavezan");
-			const {data, error} = await Smer.create({id_grupe, naziv});
-			if(error)
-				throw error;
+			const data = await Smer.create([{id_grupe, naziv}]);
 			if(data?.affectedRows == 0)
 				throw new Error();
 			return res.status(StatusCodes.OK).json({ok: true, result: data});
@@ -34,9 +30,7 @@ async function Resolver(req, res) {
 			await Authorize(user, ["admin"]);
 			if(!req.body.ids)
 				throw new Errors.BadRequestError("Idjevi za brisanje su obavezni");
-			const {data, error} = await deleteMany(req.body.ids);
-			if(error)
-				throw error;
+			const data = await deleteMany(req.body.ids);
 			return res.status(StatusCodes.OK).json({ok: true, result: data});
 		}
 		default:

@@ -182,11 +182,11 @@ export async function getServerSideProps({req, res}) {
 	try {
 		const user = await Auth(req, res);
 		await Authorize(user, ["admin"]);
-		const {data: grupe} = await Grupa.find({});
-		const {data: smerovi} = await Smer.query(
+		const grupe = await Grupa.find({});
+		const smerovi = await Smer.query(
 			`SELECT s.id_smera, s.naziv AS naziv, g.naziv AS grupa, g.id_grupe AS id_grupe ` +
 			`FROM smerovi s JOIN grupe g USING(id_grupe)` 
-		)
+		);
 		const props = {
 			grupe: serialize(grupe),
 			smerovi: serialize(smerovi)

@@ -169,7 +169,7 @@ export async function getServerSideProps({req, res}) {
 	try {
 		const user = await Auth(req, res);
 		await Authorize(user, ["admin"]);
-		const {data, error} = await Grad.find({});
+		const data = await Grad.find({});
 		const props = {gradovi: serialize(data)};
 		return {props};
 	} catch (error) {

@@ -1,8 +1,8 @@
 import {Grad} from "../models"
 
 async function sviGradovi() {
-	const {data, error} = await Grad.find({});
-	return {data, error};
+	const res = await Grad.find({});
+	return res;
 }
 
 async function deleteMany(ids) {

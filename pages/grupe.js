@@ -156,7 +156,7 @@ export async function getServerSideProps({req, res}) {
 	try {
 		const user = await Auth(req, res);
 		await Authorize(user, ["admin"]);
-		const {data, error} = await Grupa.find({});
+		const data = await Grupa.find({});
 		const props = {grupe: serialize(data)};
 		return {props};
 	} catch (error) {

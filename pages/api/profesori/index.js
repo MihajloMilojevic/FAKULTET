@@ -9,9 +9,7 @@ import Authorize from "../../../middleware/authorize"
 async function Resolver(req, res) {
 	switch (req.method) {
 		case "GET": {
-			const {data, error} = await sviProfesori()
-			if(error)
-				throw error;
+			const data = await sviProfesori()
 			return res.status(StatusCodes.OK).json({ok: true, profesori: data});
 		}
 		case "POST":{
@@ -32,9 +30,7 @@ async function Resolver(req, res) {
 				throw new Errors.BadRequestError("Telefon je obavezan");
 			if(!plata)
 				throw new Errors.BadRequestError("Plata je obavezna");
-			const {data, error} = await Profesor.create({jmbg, ime, prezime, mejl, adresa, telefon, plata});
-			if(error)
-				throw error;
+			const data = await Profesor.create([{jmbg, ime, prezime, mejl, adresa, telefon, plata}]);
 			if(data?.affectedRows == 0)
 				throw new Error();
 			return res.status(StatusCodes.OK).json({ok: true, result: data});
@@ -44,9 +40,7 @@ async function Resolver(req, res) {
 			await Authorize(user, ["admin"]);
 			if(!req.body.ids)
 				throw new Errors.BadRequestError("Idjevi za brisanje su obavezni");
-			const {data, error} = await deleteMany(req.body.ids);
-			if(error)
-				throw error;
+			const data = await deleteMany(req.body.ids);
 			return res.status(StatusCodes.OK).json({ok: true, result: data});
 		}
 		default:

@@ -7,6 +7,6 @@ module.exports = (err, req, res, next) => {
 		msg: err.message || "Doslo je do greske, probajte ponovo kasnije",
 	}
 	
-	// console.trace(err);
-	return res.status(error.statusCode).json({ ok: false, message: error.msg })
+	console.trace(err);
+	return res.status(error.statusCode).json({ ok: false, message: error.msg})
   }

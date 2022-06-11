@@ -1,0 +1,28 @@
+
+INSERT INTO smerovi(naziv, id_grupe) 
+VALUES 
+('Informacioni sistemi', '2'), 
+('Informacione tehnologije', '2'), 
+('Arhitektura', '3'), 
+('Biomedicinsko inženjerstvo', '4'), 
+('Energetika, elektronika i telekomunikacije', '2'), 
+('Računarstvo i automatika', '2'), 
+('Merenje i regulacija', '2'), 
+('Primenjeno softversko inženjerstvo', '2'), 
+('Softversko inženjerstvo i informacione tehnologije', '2'), 
+('Informacioni inženjering', '2'), 
+('Čiste energetske tehnologije', '5'), 
+('Geodezija i geoinformatika', '6'), 
+('Grafičko inženjerstvo i dizajn', '7'), 
+('Građevinarstvo', '8'), 
+('Industrijsko inženjerstvo', '9'), 
+('Inženjerski menadžment', '9'), 
+('Inženjerstvo informacionih sistema', '9'), 
+('Upravljanje rizikom od katastrofalnih događaja i požara', '10'), 
+('Inženjerstvo zaštite na radu', '11'), 
+('Inženjerstvo zaštite životne sredine', '11'), 
+('Proizvodno mašinstvo', '12'), 
+('Mehanizacija i konstrukciono mašinstvo', '12'), 
+('Energetika i procesna tehnika', '12'), 
+('Tehnička mehanika i dizajn u tehnici', '12'), 
+('Mehatronika', '13');

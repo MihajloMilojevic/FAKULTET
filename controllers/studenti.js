@@ -1,11 +1,11 @@
 import {Student} from "../models"
 
 async function sviStudenti() {
-	const {data, error} = await Student.query(
+	const res = await Student.query(
 		"SELECT S.broj_indeksa, s.ime, s.prezime, s.mejl, g.naziv grad, sm.naziv smer " +
 		"FROM studenti s JOIN gradovi g USING(id_grada) JOIN smerovi sm USING(id_smera)"
 	);
-	return {data, error};
+	return res;
 }
 
 async function deleteMany(ids) {

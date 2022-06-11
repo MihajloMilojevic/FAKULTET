@@ -2,8 +2,8 @@ const Errors = require("../errors");
 import { Admin, Korisnik, Profesor, Student } from "../models";
 
 async function login({mejl, lozinka}) {
-	let {error, data} = await Korisnik.find({mejl});
-	if(error || data.length === 0)
+	let data = await Korisnik.find({mejl});
+	if(data.length === 0)
 		throw new Errors.UnauthenticatedError("Korisnik ne postoji");
 	const korisnik = data[0];
 	const tacnaLozinka = await korisnik.uporediLozinku(lozinka);
@@ -13,26 +13,20 @@ async function login({mejl, lozinka}) {
 }
 
 async function podaci(mejl) {
-	var {data, error} = await Korisnik.find({mejl});
+	var data = await Korisnik.find({mejl});
 	let korisnik = data[0];
 	let odgovor = null;
 	switch(korisnik.uloga) {
 		case "admin":
-			var {data, error} = await Admin.find({id_admina: korisnik.id_admina});
-			if(error)
-				throw error;
+			var data = await Admin.find({id_admina: korisnik.id_admina});
 			odgovor = data[0];
 			break;
 		case "profesor":
-			var {data, error} = await Profesor.find({id_profesora: korisnik.id_profesora});
-			if(error)
-				throw error;
+			var data = await Profesor.find({id_profesora: korisnik.id_profesora});
 			odgovor = data[0];
 			break;
 		case "student":
-			var {data, error} = await Student.find({broj_indeksa: korisnik.broj_indeksa});
-			if(error)
-				throw error;
+			var data = await Student.find({broj_indeksa: korisnik.broj_indeksa});
 			odgovor = data[0];
 			break;
 	}

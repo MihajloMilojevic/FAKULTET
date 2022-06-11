@@ -1,8 +1,8 @@
 import {Grupa} from "../models"
 
 async function sveGrupe() {
-	const {data, error} = await Grupa.find({});
-	return {data, error};
+	const data = await Grupa.find({});
+	return data;
 }
 
 async function deleteMany(ids) {

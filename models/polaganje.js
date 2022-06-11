@@ -9,21 +9,26 @@
 import mysqlLikeMongo from "@mihajlomilojevic/mysql-like-mongo"
 
 const schema = mysqlLikeMongo.Schema({
-	id_ispita: {
+	id_polaganja: {
 		type: mysqlLikeMongo.DataTypes.INTEGER,
 		primary: true,
-		auto: true
-	},
-	id_predmeta: {
-		type: mysqlLikeMongo.DataTypes.INTEGER,
+		auto: true,
 		mutable: false
 	},
-	datum: {
-		type: mysqlLikeMongo.DataTypes.DATETIME,
-		default: () => new Date()
-	}
+	broj_indeksa: {
+		type: mysqlLikeMongo.DataTypes.STRING,
+		primary: true,
+		mutable: false
+	},
+	id_ispita: {
+		type: mysqlLikeMongo.DataTypes.INTEGER
+	},
+	ocena: {
+		type: mysqlLikeMongo.DataTypes.INTEGER,
+		default: 5
+	},
 })
 
-const Ispiti = mysqlLikeMongo.Model("ispiti", schema);
+const Polaganje = mysqlLikeMongo.Model("polaganje", schema);
 
-export default Ispiti;
+export default Polaganje;

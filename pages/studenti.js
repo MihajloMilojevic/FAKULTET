@@ -7,22 +7,23 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
 import { serialize } from "../utils";
 import { useState } from "react";
 
-export default function Studenti({studenti}) {
+export default function Studenti({studenti, gradovi, smerovi}) {
 	const [selectionModel, setSelectionModel] = useState([]);
 	const [listaStudenata, setListaStudenata] = useState(studenti);
 	const [createDialogOpen, setCreateDialogOpen] = useState(false);
-	const [createGrupaFormData, setCreateDialogFormData] = useState({
+	const [createDialogFormData, setCreateDialogFormData] = useState({
 		jmbg: "",
 		ime: "",
 		prezime: "",
 		mejl: "",
-		adresa: "",
-		telefon: "",
-		plata: ""
+		id_grada: "",
+		id_smera: ""
 	})
 
 	const zaglavlje = [
@@ -89,13 +90,15 @@ export default function Studenti({studenti}) {
 
 	const handleCreateDialogFormDataChange = e => {
 		setCreateDialogFormData({
-			...createGrupaFormData,
+			...createDialogFormData,
 			[e.target.name]: e.target.value
 		})
 	}
 
 	const handleCreateDialogConfirm = async () => {
-		await createGrupa(createGrupaFormData);
+		console.log(createDialogFormData);
+		return;
+		await createGrupa(createDialogFormData);
 		await fetchGrupe();
 		setCreateDialogOpen(false);
 		setCreateDialogFormData({
@@ -103,9 +106,8 @@ export default function Studenti({studenti}) {
 			ime: "",
 			prezime: "",
 			mejl: "",
-			adresa: "",
-			telefon: "",
-			plata: ""
+			id_grada: "",
+			id_smera: ""
 		})
 	}
 
@@ -152,7 +154,7 @@ export default function Studenti({studenti}) {
 					type="text"
 					fullWidth
 					variant="standard"
-					value={createGrupaFormData.jmbg}
+					value={createDialogFormData.jmbg}
 					onChange={handleCreateDialogFormDataChange}
 					/>
 					<TextField
@@ -163,7 +165,7 @@ export default function Studenti({studenti}) {
 					type="text"
 					fullWidth
 					variant="standard"
-					value={createGrupaFormData.ime}
+					value={createDialogFormData.ime}
 					onChange={handleCreateDialogFormDataChange}
 					/>
 					<TextField
@@ -174,7 +176,7 @@ export default function Studenti({studenti}) {
 					type="text"
 					fullWidth
 					variant="standard"
-					value={createGrupaFormData.prezime}
+					value={createDialogFormData.prezime}
 					onChange={handleCreateDialogFormDataChange}
 					/>
 					<TextField
@@ -185,42 +187,35 @@ export default function Studenti({studenti}) {
 					type="text"
 					fullWidth
 					variant="standard"
-					value={createGrupaFormData.mejl}
+					value={createDialogFormData.mejl}
 					onChange={handleCreateDialogFormDataChange}
 					/>
-					<TextField
-					name="adresa"
-					margin="dense"
-					id="adresa"
-					label="Adresa"
-					type="text"
-					fullWidth
-					variant="standard"
-					value={createGrupaFormData.adresa}
-					onChange={handleCreateDialogFormDataChange}
-					/>
-					<TextField
-					name="telefon"
-					margin="dense"
-					id="telefon"
-					label="Telefon"
-					type="text"
-					fullWidth
-					variant="standard"
-					value={createGrupaFormData.telefon}
-					onChange={handleCreateDialogFormDataChange}
-					/>
-					<TextField
-					name="plata"
-					margin="dense"
-					id="plata"
-					label="Plata"
-					type="text"
-					fullWidth
-					variant="standard"
-					value={createGrupaFormData.plata}
-					onChange={handleCreateDialogFormDataChange}
-					/>
+					<Select
+						id="odabir-grada"
+						value={createDialogFormData.id_grada}
+						label="Grad"
+						name="id_grada"
+						onChange={handleCreateDialogFormDataChange}
+						fullWidth
+						margin='dense'
+						style={{marginBlock : 30}}
+					>
+						{
+							gradovi.map((grad, id) => (<MenuItem key={`grad-${id}`} value={grad.id_grada}>{grad.naziv}</MenuItem>))
+						}
+					</Select>
+					<Select
+						id="odabir-smera"
+						value={createDialogFormData.id_smera}
+						label="Smer"
+						name="id_smera"
+						onChange={handleCreateDialogFormDataChange}
+						fullWidth
+					>
+						{
+							smerovi.map((smer, id) => (<MenuItem key={`smer-${id}`} value={smer.id_smera}>{smer.naziv}</MenuItem>))
+						}
+					</Select>
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={handleCreateDialogClose}>Odustani</Button>
@@ -234,13 +229,20 @@ export default function Studenti({studenti}) {
 
 export async function getServerSideProps({req, res}) {
 	try {
+		const {Grad, Smer} = require("../models");
 		const Auth = require("../middleware/authentication");
 		const Authorize = require("../middleware/authorize");
 		const {sviStudenti} = require("../controllers/studenti")
 		const user = await Auth(req, res);
 		await Authorize(user, ["admin"]);
-		const {data} = await sviStudenti();
-		const props = {studenti: serialize(data)};
+		const studenti = await sviStudenti();
+		const gradovi = await Grad.find({});
+		const smerovi = await Smer.find({});
+		const props = {
+			studenti: serialize(studenti), 
+			gradovi: serialize(gradovi), 
+			smerovi: serialize(smerovi)
+		};
 		return {props};
 	} catch (error) {
 		console.error(error);

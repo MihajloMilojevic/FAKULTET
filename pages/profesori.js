@@ -240,7 +240,7 @@ export async function getServerSideProps({req, res}) {
 	try {
 		const user = await Auth(req, res);
 		await Authorize(user, ["admin"]);
-		const {data} = await Profesor.find({});
+		const data = await Profesor.find({});
 		const props = {profesori: serialize(data.map(prof => ({
 			id_profesora: prof.id_profesora,
 			ime: prof.ime,
