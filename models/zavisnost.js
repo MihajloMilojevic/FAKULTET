@@ -13,7 +13,7 @@ const schema = mysqlLikeMongo.Schema({
 		default: 0,
 		mutable: false
 	},
-	id_predmeta_do: {
+	id_predmeta_ko: {
 		type: mysqlLikeMongo.DataTypes.INTEGER,
 		primary: true,
 		default: 0,

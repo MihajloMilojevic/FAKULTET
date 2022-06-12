@@ -597,7 +597,10 @@ VALUES
 ('Mehanizacija i konstrukciono mašinstvo', '12'), 
 ('Energetika i procesna tehnika', '12'), 
 ('Tehnička mehanika i dizajn u tehnici', '12'), 
-('Mehatronika', '13');
+('Mehatronika', '13'),
+('Finansijski menadžment', '1'), 
+('Operacioni menadžment', '1'), 
+('Projektni menadžment', '1');
 
 -- PROFESORI --
 
@@ -611,6 +614,58 @@ VALUES
 ('2710984782874', 'Miodrag', 'Lekić', 'lekicmiodrag84@gmail.com', 'Drvarska 32', '06095135726', '76000'), 
 ('1701985710114', 'Uroš', 'Bjelobrk', 'bjelibrk@gmail.com', 'Kralja Mihajla Zetskog 48', '0653928465', '59000'), 
 ('0305978780038', 'Ivan', 'Đekić', 'ivan78@gmail.com', 'Samaila 583', '06138416792', '69000');
+
+-- PREDMETI --
+
+INSERT INTO predmeti (naziv, id_smera, id_profesora, nedeljni_fond) 
+VALUES 
+('Osnove programiranja', '9', '2', '2'), 
+('Algebra', '9', '1', '4'), 
+('Arhitektura računara', '9', '4', '2'), 
+('Sociologija tehnike', '9', '7', '2'), 
+('Engleski jezik', '9', '3', '3'), 
+('Objektno orijentisano programiranje 1', '9', '2', '3'), 
+('Algoritmi i strukture podataka', '9', '5', '3'), 
+('Uvod u softversko inženjerstvo', '9', '8', '3'), 
+('Internet mreže', '9', '4', '3'), 
+('Matematička analiza', '9', '1', '4'), 
+('Diskretna matematika', '9', '1', '3'), 
+('Objektno orijentisano programiranje 2', '9', '5', '2'), 
+('Organizacija podataka', '9', '8', '2'), 
+('Numerički algoritmi i numerički softver', '9', '4', '2'), 
+('Baze podataka', '9', '5', '2'), 
+('Veb programiranje', '9', '6', '2'), 
+('Operativni sistemi', '9', '8', '2'), 
+('Statistika', '9', '1', '3'), 
+('Matematika 1', '26', '1', '4'), 
+('Ekonomija', '26', '5', '4'), 
+('Menadžment', '26', '7', '4'), 
+('Osnove informaciono komunikacionih tehnologija', '26', '4', '4'), 
+('Sociologija', '26', '7', '3'), 
+('Psihologija', '26', '7', '3'), 
+('Engleski jezik 1', '26', '3', '2'), 
+('Matematika 2', '26', '1', '4'), 
+('Osnovi organizacije', '26', '5', '4'), 
+('Menadžment ljudskih resursa', '26', '2', '4'), 
+('Ekonomika poslovanja i planiranje', '26', '6', '4');
+
+-- ZAVISNOSTI -- 
+
+INSERT INTO zavisnosti (id_predmeta_od, id_predmeta_ko) 
+VALUES 
+('1', '6'), 
+('1', '7'), 
+('1', '16'), 
+('2', '11'), 
+('2', '14'), 
+('3', '9'), 
+('6', '12'), 
+('8', '17'), 
+('10', '14'), 
+('13', '15'), 
+('19', '26'), 
+('20', '29'), 
+('21', '28');
 
 -- ADMINISTRATORI --
 

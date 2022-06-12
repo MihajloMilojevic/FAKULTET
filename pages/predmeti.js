@@ -210,13 +210,13 @@ export default function Predmeti({predmeti, smerovi, profesori}) {
 						renderValue={(selected) => (
 							<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
 								{selected.map((value) => (
-									<Chip key={value} label={predmeti.find(el => el.id_predmeta == value).naziv} />
+									<Chip key={value} label={listaPredmeta.find(el => el.id_predmeta == value).naziv} />
 								))}
 							</Box>
 						)}
 					>
 						{
-							predmeti
+							listaPredmeta
 								.filter(predmet => predmet.id_smera == createDialogFormData.id_smera)
 								.map((predmet, id) => (<MenuItem key={`predmeti-${id}`} value={predmet.id_predmeta}>{predmet.naziv}</MenuItem>))
 						}
