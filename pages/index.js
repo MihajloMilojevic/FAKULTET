@@ -32,6 +32,7 @@ export default function Home({korisnik}) {
 			<Link href="/smerovi">Smerovi</Link> <br/>
 			<Link href="/profesori">Profesori</Link> <br/>
 			<Link href="/studenti">Studenti</Link> <br/>
+			<Link href="/predmeti">Predmeti</Link> <br/>
 		</>
 	)
 }

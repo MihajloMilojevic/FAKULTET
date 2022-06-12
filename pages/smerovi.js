@@ -32,7 +32,7 @@ export default function Smerovi({smerovi, grupe}) {
 		{ field: 'grupa', headerName: 'GRUPA', flex: 1}
 	];
 
-	async function fetchGrupe() {
+	async function fetchSmer() {
 		try {
 			const res = await fetch("/api/smerovi");
 			const data = await res.json();
@@ -55,7 +55,7 @@ export default function Smerovi({smerovi, grupe}) {
 			let data = await res.json();
 			if(!data.ok)
 				throw new Error(data.message);
-			await fetchGrupe();
+			await fetchSmer();
 			alert("Uspesno obrisano");
 		}
 		catch(error) {
@@ -94,7 +94,7 @@ export default function Smerovi({smerovi, grupe}) {
 
 	const handleCreateDialogConfirm = async () => {
 		await createSmer(createDialogFormData);
-		await fetchGrupe();
+		await fetchSmer();
 		setCreateDialogOpen(false);
 		setCreateDialogFormData({
 			id_grupe: "",

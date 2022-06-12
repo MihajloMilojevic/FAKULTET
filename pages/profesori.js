@@ -17,7 +17,7 @@ export default function Profesori({profesori}) {
 	const [selectionModel, setSelectionModel] = useState([]);
 	const [listaProfesora, setListaProfesora] = useState(profesori);
 	const [createDialogOpen, setCreateDialogOpen] = useState(false);
-	const [createGrupaFormData, setCreateDialogFormData] = useState({
+	const [createDialogFormData, setCreateDialogFormData] = useState({
 		jmbg: "",
 		ime: "",
 		prezime: "",
@@ -35,7 +35,7 @@ export default function Profesori({profesori}) {
 		{ field: 'telefon', headerName: 'TELEFON', flex: 1}
 	];
 
-	async function fetchGrupe() {
+	async function fetchProfesor() {
 		try {
 			const res = await fetch("/api/profesori");
 			const data = await res.json();
@@ -58,7 +58,7 @@ export default function Profesori({profesori}) {
 			let data = await res.json();
 			if(!data.ok)
 				throw new Error(data.message);
-			await fetchGrupe();
+			await fetchProfesor();
 			alert("Uspesno obrisano");
 		}
 		catch(error) {
@@ -66,7 +66,7 @@ export default function Profesori({profesori}) {
 		}
 	}
 
-	async function createGrupa(data) {
+	async function createProfesor(data) {
 		try {
 			const json = await fetch("/api/profesori", {
 				headers: {
@@ -90,14 +90,14 @@ export default function Profesori({profesori}) {
 
 	const handleCreateDialogFormDataChange = e => {
 		setCreateDialogFormData({
-			...createGrupaFormData,
+			...createDialogFormData,
 			[e.target.name]: e.target.value
 		})
 	}
 
 	const handleCreateDialogConfirm = async () => {
-		await createGrupa(createGrupaFormData);
-		await fetchGrupe();
+		await createProfesor(createDialogFormData);
+		await fetchProfesor();
 		setCreateDialogOpen(false);
 		setCreateDialogFormData({
 			jmbg: "",
@@ -156,7 +156,7 @@ export default function Profesori({profesori}) {
 					type="text"
 					fullWidth
 					variant="standard"
-					value={createGrupaFormData.jmbg}
+					value={createDialogFormData.jmbg}
 					onChange={handleCreateDialogFormDataChange}
 					/>
 					<TextField
@@ -167,7 +167,7 @@ export default function Profesori({profesori}) {
 					type="text"
 					fullWidth
 					variant="standard"
-					value={createGrupaFormData.ime}
+					value={createDialogFormData.ime}
 					onChange={handleCreateDialogFormDataChange}
 					/>
 					<TextField
@@ -178,7 +178,7 @@ export default function Profesori({profesori}) {
 					type="text"
 					fullWidth
 					variant="standard"
-					value={createGrupaFormData.prezime}
+					value={createDialogFormData.prezime}
 					onChange={handleCreateDialogFormDataChange}
 					/>
 					<TextField
@@ -189,7 +189,7 @@ export default function Profesori({profesori}) {
 					type="text"
 					fullWidth
 					variant="standard"
-					value={createGrupaFormData.mejl}
+					value={createDialogFormData.mejl}
 					onChange={handleCreateDialogFormDataChange}
 					/>
 					<TextField
@@ -200,7 +200,7 @@ export default function Profesori({profesori}) {
 					type="text"
 					fullWidth
 					variant="standard"
-					value={createGrupaFormData.adresa}
+					value={createDialogFormData.adresa}
 					onChange={handleCreateDialogFormDataChange}
 					/>
 					<TextField
@@ -211,7 +211,7 @@ export default function Profesori({profesori}) {
 					type="text"
 					fullWidth
 					variant="standard"
-					value={createGrupaFormData.telefon}
+					value={createDialogFormData.telefon}
 					onChange={handleCreateDialogFormDataChange}
 					/>
 					<TextField
@@ -222,7 +222,7 @@ export default function Profesori({profesori}) {
 					type="text"
 					fullWidth
 					variant="standard"
-					value={createGrupaFormData.plata}
+					value={createDialogFormData.plata}
 					onChange={handleCreateDialogFormDataChange}
 					/>
 				</DialogContent>

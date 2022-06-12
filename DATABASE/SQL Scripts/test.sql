@@ -1,28 +1,10 @@
-
-INSERT INTO smerovi(naziv, id_grupe) 
+INSERT INTO profesori(jmbg, ime, prezime, mejl, adresa, telefon, plata) 
 VALUES 
-('Informacioni sistemi', '2'), 
-('Informacione tehnologije', '2'), 
-('Arhitektura', '3'), 
-('Biomedicinsko inženjerstvo', '4'), 
-('Energetika, elektronika i telekomunikacije', '2'), 
-('Računarstvo i automatika', '2'), 
-('Merenje i regulacija', '2'), 
-('Primenjeno softversko inženjerstvo', '2'), 
-('Softversko inženjerstvo i informacione tehnologije', '2'), 
-('Informacioni inženjering', '2'), 
-('Čiste energetske tehnologije', '5'), 
-('Geodezija i geoinformatika', '6'), 
-('Grafičko inženjerstvo i dizajn', '7'), 
-('Građevinarstvo', '8'), 
-('Industrijsko inženjerstvo', '9'), 
-('Inženjerski menadžment', '9'), 
-('Inženjerstvo informacionih sistema', '9'), 
-('Upravljanje rizikom od katastrofalnih događaja i požara', '10'), 
-('Inženjerstvo zaštite na radu', '11'), 
-('Inženjerstvo zaštite životne sredine', '11'), 
-('Proizvodno mašinstvo', '12'), 
-('Mehanizacija i konstrukciono mašinstvo', '12'), 
-('Energetika i procesna tehnika', '12'), 
-('Tehnička mehanika i dizajn u tehnici', '12'), 
-('Mehatronika', '13');
+('1507973785010', 'Slađana', 'Milojević', 'mdjordje@mts.rs', '8. mart 70', '0646850173', '67000'), 
+('0303971780021', 'Jovica', 'Milojević', 'jovixkv@gmail.com', '8. mart 70', '0641979392', '83000'), 
+('0405008780024', 'Đorđe', 'Milojević', 'djordjemilojevic2008@gmail.com', '8. mart 70', '0642723956', '56000'), 
+('2301957780048', 'Janko', 'Filipović', 'jankof@gmail.com', 'Braće Pirić 9', '06556871239', '63000'), 
+('2705985780014', 'Miloš', 'Veselić', 'veseli@gmail.com', 'I srpski ustanak 17', '0643175121', '91000'), 
+('2710984782874', 'Miodrag', 'Lekić', 'lekicmiodrag84@gmail.com', 'Drvarska 32', '06095135726', '76000'), 
+('1701985710114', 'Uroš', 'Bjelobrk', 'bjelibrk@gmail.com', 'Kralja Mihajla Zetskog 48', '0653928465', '59000'), 
+('0305978780038', 'Ivan', 'Đekić', 'ivan78@gmail.com', 'Samaila 583', '06138416792', '69000');

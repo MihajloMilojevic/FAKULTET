@@ -17,7 +17,7 @@ async function Resolver(req, res) {
 			await Authorize(user, ["admin"]);
 			const {naziv, id_grupe} = req.body;
 			if(!id_grupe)
-				throw new Errors.BadRequestError("Id grupe je obavezan");
+				throw new Errors.BadRequestError("Grupa je obavezna");
 			if(!naziv)
 				throw new Errors.BadRequestError("Naziv smera je obavezan");
 			const data = await Smer.create([{id_grupe, naziv}]);
