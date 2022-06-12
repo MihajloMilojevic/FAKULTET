@@ -1,6 +1,6 @@
-import Auth from "../middleware/authentication";
-import Authorize from "../middleware/authorize";
-import { Profesor } from "../models";
+import Auth from "../../middleware/authentication";
+import Authorize from "../../middleware/authorize";
+import { Profesor } from "../../models";
 
 import { DataGrid } from '@mui/x-data-grid';
 import Button from '@mui/material/Button';
@@ -10,7 +10,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
-import { serialize } from "../utils";
+import { serialize } from "../../utils";
 import { useState } from "react";
 
 export default function Profesori({profesori}) {

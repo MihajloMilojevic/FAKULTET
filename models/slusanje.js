@@ -17,9 +17,9 @@ const schema = mysqlLikeMongo.Schema({
 		primary: true,
 		mutable: false
 	},
-	odslusano: {
-		type: mysqlLikeMongo.DataTypes.INTEGER,
-		default: 0
+	zavrseno: {
+		type: mysqlLikeMongo.DataTypes.BOOL,
+		default: false
 	}
 })
 

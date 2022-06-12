@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS ispiti(
 CREATE TABLE IF NOT EXISTS slusanja(
 	id_predmeta INT NOT NULL REFERENCES predmeti(id_predmeta),
 	broj_indeksa VARCHAR(20) NOT NULL REFERENCES studenti(broj_indeksa),
-	odslusano BOOLEAN NOT NULL DEFAULT FALSE,
+	zavrseno BOOLEAN NOT NULL DEFAULT FALSE,
 	PRIMARY KEY (id_predmeta, broj_indeksa)
 );
 
@@ -116,7 +116,7 @@ BEGIN
         FROM slusanja 
         WHERE broj_indeksa = broj_indeksa_in AND 
         	id_predmeta IN( SELECT id_predmeta_od FROM zavisnosti WHERE id_predmeta_ko = id_predmeta_in) AND
-        	odslusano IS TRUE
+        	zavrseno IS TRUE
         );
    RETURN brojZavisnihPredmeta = brojOdsusanihPredmeta AND student_id_smera = predmet_id_smera;
 END; //
@@ -405,6 +405,7 @@ VALUES
 (26340, 'Bela Crkva'),
 (18310, 'Bela Palanka'),
 (21300, 'Beočin'),
+(11000, 'Beograd'),
 (18420, 'Blace'),
 (15350, 'Bogatić'),
 (16205, 'Bojnik'),
@@ -667,7 +668,27 @@ VALUES
 ('20', '29'), 
 ('21', '28');
 
+
+-- STUDENTI --
+
+INSERT INTO studenti (broj_indeksa, jmbg, ime, prezime, mejl, id_grada, id_smera) 
+VALUES 
+('1-2022', '1009004780028', 'Nikola', 'Rogonjić', 'nikolarogonjic14@gmail.com', '36000', '9'), 
+('2-2022', '1210004785035', 'Ana', 'Luković', 'alukovic2004@gmail.com', '11000', '26'), 
+('3-2022', '0510004780017', 'Stefan', 'Pejković', 'stefanpejkovic2004@gmail.com', '36000', '9'), 
+('4-2022', '2004004785048', 'Sara', 'Spasojević', 'saraspasojevic7@gmail.com', '36000', '26'), 
+('5-2022', '2304004785025', 'Anja', 'Đukić', 'anjadju2004@gmail.com', '11000', '26'), 
+('6-2022', '2405005780028', 'Aleksandar', 'Temelkov', 'temelkovaleksa@gmail.com', '21101', '9'), 
+('7-2022', '1106004785025', 'Jovana', 'Jaćović', 'jovanajacovic11@gmail.com', '19300', '26'), 
+('8-2022', '0411004785061', 'Marija', 'Ljubić', 'ljubicmarija04@gmail.com', '34000', '26'), 
+('9-2022', '1205004780056', 'Predrag', 'Babić', 'babicpedja37@gmail.com', '17541', '9'),
+('10-2022', '1606003780014', 'Aleksa', 'Milić', 'aleksamilickv@gmail.com', '36000', '9'), 
+('11-2022', '2206004780013', 'Strahinja', 'Sretović', 'strahinjasretovic04@gmail.com', '21101', '9'), 
+('12-2022', '0807005780013', 'Viktor', 'Kundović', 'viktor.vico@gmail.com', '32250', '9'),
+('13-2022', '1408004924978', 'Andrija', 'Baščarević', 'bascarevic.andrija22@gmail.com', '21101', '9');
+
 -- ADMINISTRATORI --
 
 INSERT INTO admini (jmbg, ime, prezime, mejl, adresa, telefon) 
-VALUES ('3105004780024', 'Mihajlo', 'Milojevic', 'milojevicm374@gmail.com', '8. mart 70', '0649781191');
+VALUES 
+('3105004780024', 'Mihajlo', 'Milojevic', 'milojevicm374@gmail.com', '8. mart 70', '0649781191');

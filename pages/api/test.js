@@ -5,17 +5,13 @@ import { StatusCodes } from "http-status-codes";
 import {sviStudenti} from "../../controllers/studenti"
 
 async function Fun(req, res) {
-	// await Auth(req, res);
-	// console.log("START");
-	//  res.json("GRUPE");
-	const data = await Grad.create([
-		{id_grada: 1, naziv: "GR1"},
-		{id_grada: 2, naziv: "GR2"},
-		{id_grada: 3, naziv: "GR3"},
-		{id_grada: 4, naziv: "GR4"},
-		{id_grada: 5, naziv: "GR5"}
-	]);
-	res.status(StatusCodes.OK).json(data);
+	const svi = await Grad.find({});
+	svi.sort((a,b) => (a.naziv > b.naziv) ? 1 : ((b.naziv > a.naziv) ? -1 : 0))
+	await Grad.findAndDelete({id_grada: {"<>": 0}});
+	let a = await Grad.find({});
+	console.log(a)
+	await Grad.create(svi);
+	res.status(StatusCodes.OK).json(svi);
 }
 
 export default errorWrapper(Fun);

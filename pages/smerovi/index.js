@@ -1,6 +1,5 @@
-import Auth from "../middleware/authentication";
-import Authorize from "../middleware/authorize";
-import { Grupa } from "../models";
+import Auth from "../../middleware/authentication";
+import Authorize from "../../middleware/authorize";
 
 import { DataGrid } from '@mui/x-data-grid';
 import Button from '@mui/material/Button';
@@ -9,37 +8,44 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
-import { serialize } from "../utils";
-import { useState, useRef } from "react";
+import { serialize } from "../../utils";
+import { useState } from "react";
 
-export default function Grupe({grupe}) {
+// https://codesandbox.io/s/skp0x7?file=/demo.js 
+
+export default function Smerovi({smerovi, grupe}) {
+
 	const [selectionModel, setSelectionModel] = useState([]);
-	const [listaGrupa, setListaGrupa] = useState(grupe);
+	const [listaSmerova, setListaSmerova] = useState(smerovi);
 	const [createDialogOpen, setCreateDialogOpen] = useState(false);
-	const [createGrupaFormData, setCreateDialogFormData] = useState({
-		naziv: ""
+	const [createDialogFormData, setCreateDialogFormData] = useState({
+		naziv: "",
+		id_grupe: ""
 	})
 
 	const zaglavlje = [
 		{ field: 'id', headerName: 'ID' },
-		{ field: 'naziv', headerName: 'NAZIV', flex: 1}
+		{ field: 'naziv', headerName: 'NAZIV', flex: 1},
+		{ field: 'grupa', headerName: 'GRUPA', flex: 1}
 	];
 
-	async function fetchGrupe() {
+	async function fetchSmer() {
 		try {
-			const res = await fetch("/api/grupa");
+			const res = await fetch("/api/smerovi");
 			const data = await res.json();
 			if(!data.ok)
 				throw new Error(data.message);
-			setListaGrupa(data.grupe);
+			setListaSmerova(data.smerovi);
 		} catch (error) {
 			alert(error.message);
 		}
 	}
 	async function Delete() {
 		try {
-			let res = await fetch("/api/grupa", {
+			let res = await fetch("/api/smerovi", {
 				headers: {
 					"Content-Type": "application/json"
 				},
@@ -49,7 +55,7 @@ export default function Grupe({grupe}) {
 			let data = await res.json();
 			if(!data.ok)
 				throw new Error(data.message);
-			await fetchGrupe();
+			await fetchSmer();
 			alert("Uspesno obrisano");
 		}
 		catch(error) {
@@ -57,9 +63,9 @@ export default function Grupe({grupe}) {
 		}
 	}
 
-	async function createGrupa(data) {
+	async function createSmer(data) {
 		try {
-			const json = await fetch("/api/grupa", {
+			const json = await fetch("/api/smerovi", {
 				headers: {
 					"Content-Type": "application/json"
 				},
@@ -81,23 +87,24 @@ export default function Grupe({grupe}) {
 
 	const handleCreateDialogFormDataChange = e => {
 		setCreateDialogFormData({
-			...createGrupaFormData,
+			...createDialogFormData,
 			[e.target.name]: e.target.value
 		})
 	}
 
 	const handleCreateDialogConfirm = async () => {
-		await createGrupa(createGrupaFormData);
-		await fetchGrupe();
+		await createSmer(createDialogFormData);
+		await fetchSmer();
 		setCreateDialogOpen(false);
 		setCreateDialogFormData({
+			id_grupe: "",
 			naziv: ""
 		})
 	}
 
 	return (
 		<div>
-			<h1>Grupe</h1>
+			<h1>Smerovi</h1>
 			<Button
 				onClick={Delete}
 			>
@@ -109,9 +116,10 @@ export default function Grupe({grupe}) {
 			  DODAJ
 			</Button>
 			<DataGrid
-				rows={listaGrupa.map(el => ({
-					id: el.id_grupe, 
-					naziv: el.naziv
+				rows={listaSmerova.map(el => ({
+					id: el.id_smera, 
+					naziv: el.naziv,
+					grupa: el.grupa
 				}))}
 				columns={zaglavlje}
 				pageSize={10}
@@ -134,13 +142,26 @@ export default function Grupe({grupe}) {
 					name="naziv"
 					margin="dense"
 					id="naziv"
-					label="Naziv grupe"
+					label="Naziv smera"
 					type="text"
 					fullWidth
+					multiline
 					variant="standard"
-					value={createGrupaFormData.naziv}
+					value={createDialogFormData.naziv}
 					onChange={handleCreateDialogFormDataChange}
 					/>
+					<Select
+						id="odabir-grupe"
+						value={createDialogFormData.id_grupe}
+						label="Grupa"
+						name="id_grupe"
+						onChange={handleCreateDialogFormDataChange}
+						fullWidth
+					>
+						{
+							grupe.map((grupa, id) => (<MenuItem key={`grupa-${id}`} value={grupa.id_grupe}>{grupa.naziv}</MenuItem>))
+						}
+					</Select>
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={handleCreateDialogClose}>Odustani</Button>
@@ -153,11 +174,23 @@ export default function Grupe({grupe}) {
 }
 
 export async function getServerSideProps({req, res}) {
+	
+	//const  mysqlLikeMongo = require("@mihajlomilojevic/mysql-like-mongo");
+	
+	const { Grupa, Smer } = require("../../models");
+
 	try {
 		const user = await Auth(req, res);
 		await Authorize(user, ["admin"]);
-		const data = await Grupa.find({});
-		const props = {grupe: serialize(data)};
+		const grupe = await Grupa.find({});
+		const smerovi = await Smer.query(
+			`SELECT s.id_smera, s.naziv AS naziv, g.naziv AS grupa, g.id_grupe AS id_grupe ` +
+			`FROM smerovi s JOIN grupe g USING(id_grupe)` 
+		);
+		const props = {
+			grupe: serialize(grupe),
+			smerovi: serialize(smerovi)
+		};
 		return {props};
 	} catch (error) {
 		return {

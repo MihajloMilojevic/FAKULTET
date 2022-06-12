@@ -1,7 +1,9 @@
 import {Grad} from "../models"
 
 async function sviGradovi() {
-	const res = await Grad.find({});
+	const res = await Grad.query(
+		"SELECT * FROM gradovi ORDER BY naziv"
+	);
 	return res;
 }
 

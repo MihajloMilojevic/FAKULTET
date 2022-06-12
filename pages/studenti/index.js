@@ -10,7 +10,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 
-import { serialize } from "../utils";
+import { serialize } from "../../utils";
 import { useState } from "react";
 
 export default function Studenti({studenti, gradovi, smerovi}) {
@@ -144,7 +144,7 @@ export default function Studenti({studenti, gradovi, smerovi}) {
 			/>
 
 			<Dialog open={createDialogOpen}>
-				<DialogTitle>Dodaj profesora</DialogTitle>
+				<DialogTitle>Dodaj studenta</DialogTitle>
 				<DialogContent>
 					<TextField
 					name="broj_indeksa"
@@ -240,14 +240,15 @@ export default function Studenti({studenti, gradovi, smerovi}) {
 
 export async function getServerSideProps({req, res}) {
 	try {
-		const {Grad, Smer} = require("../models");
-		const Auth = require("../middleware/authentication");
-		const Authorize = require("../middleware/authorize");
-		const {sviStudenti} = require("../controllers/studenti")
+		const {Grad, Smer} = require("../../models");
+		const Auth = require("../../middleware/authentication");
+		const Authorize = require("../../middleware/authorize");
+		const {sviStudenti} = require("../../controllers/studenti")
 		const user = await Auth(req, res);
 		await Authorize(user, ["admin"]);
 		const studenti = await sviStudenti();
-		const gradovi = await Grad.find({});
+		let gradovi = await Grad.find({});
+		gradovi.sort((a,b) => (a.naziv > b.naziv) ? 1 : ((b.naziv > a.naziv) ? -1 : 0))
 		const smerovi = await Smer.find({});
 		const props = {
 			studenti: serialize(studenti), 

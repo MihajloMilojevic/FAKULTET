@@ -1,5 +1,5 @@
-import Auth from "../middleware/authentication";
-import Authorize from "../middleware/authorize";
+import Auth from "../../middleware/authentication";
+import Authorize from "../../middleware/authorize";
 
 import { DataGrid } from '@mui/x-data-grid';
 import Button from '@mui/material/Button';
@@ -10,42 +10,51 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import Chip from '@mui/material/Chip';
+import Box from '@mui/material/Box';
 
-import { serialize } from "../utils";
+import { serialize } from "../../utils";
 import { useState } from "react";
 
 // https://codesandbox.io/s/skp0x7?file=/demo.js 
 
-export default function Smerovi({smerovi, grupe}) {
+export default function Predmeti({predmeti, smerovi, profesori}) {
 
 	const [selectionModel, setSelectionModel] = useState([]);
-	const [listaSmerova, setListaSmerova] = useState(smerovi);
+	const [listaPredmeta, setListaPredmeta] = useState(predmeti);
 	const [createDialogOpen, setCreateDialogOpen] = useState(false);
 	const [createDialogFormData, setCreateDialogFormData] = useState({
 		naziv: "",
-		id_grupe: ""
+		nedeljni_fond: "",
+		id_smera: "",
+		id_profesora: "",
+		zavisi: []
 	})
 
 	const zaglavlje = [
 		{ field: 'id', headerName: 'ID' },
 		{ field: 'naziv', headerName: 'NAZIV', flex: 1},
-		{ field: 'grupa', headerName: 'GRUPA', flex: 1}
+		{ field: 'smer', headerName: 'SMER', flex: 1},
+		{ field: 'profesor', headerName: 'PROFESOR', flex: 1},
+		{ field: 'nedeljni_fond', headerName: 'FOND', flex: 1},
+		{ field: 'zavisi', headerName: 'ZAVISI', flex: 1}
+		
 	];
 
-	async function fetchSmer() {
+	async function fetchPredmet() {
 		try {
-			const res = await fetch("/api/smerovi");
+			const res = await fetch("/api/predmeti");
 			const data = await res.json();
 			if(!data.ok)
 				throw new Error(data.message);
-			setListaSmerova(data.smerovi);
+			setListaPredmeta(data.predmeti);
 		} catch (error) {
 			alert(error.message);
 		}
 	}
 	async function Delete() {
 		try {
-			let res = await fetch("/api/smerovi", {
+			let res = await fetch("/api/predmeti", {
 				headers: {
 					"Content-Type": "application/json"
 				},
@@ -55,7 +64,7 @@ export default function Smerovi({smerovi, grupe}) {
 			let data = await res.json();
 			if(!data.ok)
 				throw new Error(data.message);
-			await fetchSmer();
+			await fetchPredmet();
 			alert("Uspesno obrisano");
 		}
 		catch(error) {
@@ -63,9 +72,9 @@ export default function Smerovi({smerovi, grupe}) {
 		}
 	}
 
-	async function createSmer(data) {
+	async function createPredmet(data) {
 		try {
-			const json = await fetch("/api/smerovi", {
+			const json = await fetch("/api/predmeti", {
 				headers: {
 					"Content-Type": "application/json"
 				},
@@ -93,18 +102,21 @@ export default function Smerovi({smerovi, grupe}) {
 	}
 
 	const handleCreateDialogConfirm = async () => {
-		await createSmer(createDialogFormData);
-		await fetchSmer();
+		await createPredmet(createDialogFormData);
+		await fetchPredmet();
 		setCreateDialogOpen(false);
 		setCreateDialogFormData({
-			id_grupe: "",
-			naziv: ""
+			naziv: "",
+			nedeljni_fond: "",
+			id_smera: "",
+			id_profesora: "",
+			zavisi: []
 		})
 	}
 
 	return (
 		<div>
-			<h1>Smerovi</h1>
+			<h1>Predmeti</h1>
 			<Button
 				onClick={Delete}
 			>
@@ -116,10 +128,10 @@ export default function Smerovi({smerovi, grupe}) {
 			  DODAJ
 			</Button>
 			<DataGrid
-				rows={listaSmerova.map(el => ({
-					id: el.id_smera, 
-					naziv: el.naziv,
-					grupa: el.grupa
+				rows={listaPredmeta.map(el => ({
+					...el,
+					id: el.id_predmeta,
+					zavisi: el.zavisi.map(z => z.naziv).join(", ") || "-"
 				}))}
 				columns={zaglavlje}
 				pageSize={10}
@@ -136,13 +148,13 @@ export default function Smerovi({smerovi, grupe}) {
 			/>
 
 			<Dialog open={createDialogOpen}>
-				<DialogTitle>Dodaj grupu</DialogTitle>
+				<DialogTitle>Dodaj predmet</DialogTitle>
 				<DialogContent>
 					<TextField
 					name="naziv"
 					margin="dense"
 					id="naziv"
-					label="Naziv smera"
+					label="Naziv predmeta"
 					type="text"
 					fullWidth
 					multiline
@@ -150,16 +162,63 @@ export default function Smerovi({smerovi, grupe}) {
 					value={createDialogFormData.naziv}
 					onChange={handleCreateDialogFormDataChange}
 					/>
+					<TextField
+					name="nedeljni_fond"
+					margin="dense"
+					id="nedeljni_fond"
+					label=" Nedeljni fond"
+					type="text"
+					fullWidth
+					multiline
+					variant="standard"
+					value={createDialogFormData.nedeljni_fond}
+					onChange={handleCreateDialogFormDataChange}
+					/>
 					<Select
-						id="odabir-grupe"
-						value={createDialogFormData.id_grupe}
-						label="Grupa"
-						name="id_grupe"
+						id="odabir-smera"
+						value={createDialogFormData.id_smera}
+						label="Smer"
+						name="id_smera"
 						onChange={handleCreateDialogFormDataChange}
 						fullWidth
 					>
 						{
-							grupe.map((grupa, id) => (<MenuItem key={`grupa-${id}`} value={grupa.id_grupe}>{grupa.naziv}</MenuItem>))
+							smerovi.map((smer, id) => (<MenuItem key={`smerovi-${id}`} value={smer.id_smera}>{smer.naziv}</MenuItem>))
+						}
+					</Select>
+					<Select
+						id="odabir-profesora"
+						value={createDialogFormData.id_profesora}
+						label="Profesor"
+						name="id_profesora"
+						onChange={handleCreateDialogFormDataChange}
+						fullWidth
+					>
+						{
+							profesori.map((prof, id) => (<MenuItem key={`profesori-${id}`} value={prof.id_profesora}>{prof.ime}</MenuItem>))
+						}
+					</Select>
+					<Select
+						id="odabir-zavisi"
+						value={createDialogFormData.zavisi}
+						label="Zavisi"
+						name="zavisi"
+						onChange={handleCreateDialogFormDataChange}
+						fullWidth
+						multiple
+						disabled={!createDialogFormData.id_smera}
+						renderValue={(selected) => (
+							<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+								{selected.map((value) => (
+									<Chip key={value} label={listaPredmeta.find(el => el.id_predmeta == value).naziv} />
+								))}
+							</Box>
+						)}
+					>
+						{
+							listaPredmeta
+								.filter(predmet => predmet.id_smera == createDialogFormData.id_smera)
+								.map((predmet, id) => (<MenuItem key={`predmeti-${id}`} value={predmet.id_predmeta}>{predmet.naziv}</MenuItem>))
 						}
 					</Select>
 				</DialogContent>
@@ -177,19 +236,22 @@ export async function getServerSideProps({req, res}) {
 	
 	//const  mysqlLikeMongo = require("@mihajlomilojevic/mysql-like-mongo");
 	
-	const { Grupa, Smer } = require("../models");
+	const { Profesor, Smer } = require("../../models");
+	const {sviPredmeti} = require("../../controllers/predmeti");
 
 	try {
 		const user = await Auth(req, res);
 		await Authorize(user, ["admin"]);
-		const grupe = await Grupa.find({});
-		const smerovi = await Smer.query(
-			`SELECT s.id_smera, s.naziv AS naziv, g.naziv AS grupa, g.id_grupe AS id_grupe ` +
-			`FROM smerovi s JOIN grupe g USING(id_grupe)` 
-		);
+		const smerovi = await Smer.find({})
+		const profesori = await Profesor.find({});
+		const predmeti = await sviPredmeti()
 		const props = {
-			grupe: serialize(grupe),
-			smerovi: serialize(smerovi)
+			profesori: serialize(profesori.map(prof => ({
+				id_profesora: prof.id_profesora,
+				ime: prof.ime + " " + prof.prezime
+			}))),
+			smerovi: serialize(smerovi),
+			predmeti: serialize(predmeti)
 		};
 		return {props};
 	} catch (error) {
