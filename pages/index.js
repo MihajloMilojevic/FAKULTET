@@ -6,24 +6,30 @@ import { Predmet } from "../models";
 import mysqlLikeMongo from "@mihajlomilojevic/mysql-like-mongo";
 import {HomeAdmin, HomeProfesor, HomeStudent, } from "../app/index";
 
+import Button from '@mui/material/Button';
+
 export default function Home(props) {
 	const {korisnik} = props;
 	const router = useRouter();
 	return (
 		<>
-			<button onClick={
-				async () => {
-					try {
-						console.log("fetch");
-						const res = await fetch("/api/logout");
-						const data = await res.json();
-						if(data.ok)
-							router.push("/login");
-					} catch {
-						alert("Greska")
+			<Button 
+				onClick={
+					async () => {
+						try {
+							console.log("fetch");
+							const res = await fetch("/api/logout");
+							const data = await res.json();
+							if(data.ok)
+								router.push("/login");
+						} catch {
+							alert("Greska")
+						}
 					}
 				}
-			}>LOGOUT</button> <br/>
+			>
+				LOGOUT
+			</Button> <br/>
 			<p>Zdravo: {korisnik.ime} {korisnik.prezime}</p>
 			{
 				korisnik.uloga === "admin" ? <HomeAdmin {...props} /> :
