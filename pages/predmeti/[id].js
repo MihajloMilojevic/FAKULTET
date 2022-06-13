@@ -64,8 +64,20 @@ export default function Predmet({predmet, studenti, ispiti}) {
 	};
 
 	const handleZakaziIspitDialogConfirm = async () => {
-		console.log(noviIspitDatum);
 		setZakaziIspitDialogOpen(false);
+		await zakaziIspit();
+		await fetchIspite();
+		setNoviIspitDatum(new Date());
+	}
+
+	function twoDigits(value) {
+		if(value < 10) return "0" + value;
+		return value;
+	}
+
+	function datumIzStringa(params) {
+		const d = new Date(params.row.datum);
+		return `${twoDigits(d.getDate())}.${twoDigits(d.getMonth() + 1)}.${d.getFullYear()}`
 	}
 
 	const zaglavljeStudenata = [
@@ -78,14 +90,9 @@ export default function Predmet({predmet, studenti, ispiti}) {
 		{ field: 'zavrseno', headerName: 'ZAVRŠENO', flex: 1}
 	];
 
-	const zaglavljeIspiti = [
+	const zaglavljeIspita = [
 		{ field: 'id', headerName: 'ID' },
-		{ field: 'ime', headerName: 'IME', flex: 1},
-		{ field: 'prezime', headerName: 'PREZIME', flex: 1},
-		{ field: 'mejl', headerName: 'MEJL', flex: 1},
-		{ field: 'grad', headerName: 'GRAD', flex: 1},
-		{ field: 'smer', headerName: 'SMER', flex: 1},
-		{ field: 'zavrseno', headerName: 'ZAVRŠENO', flex: 1}
+		{ field: 'datum', headerName: 'DATUM', flex: 1, valueGetter: datumIzStringa}
 	];
 
 	return (
@@ -112,6 +119,20 @@ export default function Predmet({predmet, studenti, ispiti}) {
 			>
 			  Zakaži novi ispit
 			</Button>
+			<DataGrid
+				rows={listaIspita.map(is => ({
+					...is,
+					id: is.id_ispita
+				}))}
+				columns={zaglavljeIspita}
+				pageSize={10}
+				rowsPerPageOptions={[10]}
+				autoHeight
+				disableColumnFilter={true}
+				disableColumnMenu={true}
+				checkboxSelection={false}
+				disableSelectionOnClick
+			/>
 			<Dialog open={zakaziIspitDialogOpen}>
 					<DialogTitle>Zakaži ispit</DialogTitle>
 					<DialogContent>
