@@ -792,7 +792,7 @@ VALUES
 
 -- ISPITI --
 
-INSERT INTO ispiti (id_ispita, id_predmeta, datum)
+INSERT INTO ispiti (id_predmeta, datum)
 VALUES 
 ('2', '2022-06-14 14:53:00'), 
 ('2', '2022-07-14 14:53:26'), 
